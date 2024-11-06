@@ -1,5 +1,7 @@
 {
-    "userPageTitle" : "User List",
-    "userBtnTitle": "Add User",
-    "userPageDescription" : "Manage users"
-  }
+  "home": "Home",
+  "aboutUs": "About Us",
+  "contactUs": "Contact Us",
+  "login": "Log in",
+  "signUp": "Sign up"
+}

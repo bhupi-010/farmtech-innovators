@@ -11,9 +11,7 @@ import { AuthProvider } from '@farmtech/auth';
 import { Router } from './routing/Router';
 //styling of modules
 import '@mantine/core/styles.css';
-import '@mantine/nprogress/styles.css';
 import '@mantine/notifications/styles.css';
-import '@mantine/dates/styles.css';
 
 import './App.css';
 

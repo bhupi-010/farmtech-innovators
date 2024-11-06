@@ -2,14 +2,14 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import genericEn from './en/english.json';
-import genericNp from './np/nepali.json';
+import genericFr from './fr/french.json';
 
 const resources = {
     en: {
         translation: genericEn
     },
-    np : {
-        translation: genericNp
+    fr : {
+        translation: genericFr
     }
 }
 
