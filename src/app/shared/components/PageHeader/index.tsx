@@ -1,8 +1,7 @@
 import React from 'react';
-import { ActionIcon, Button, Group, Stack, Text, Title, Tooltip } from '@mantine/core';
+import { ActionIcon, Button, Group, Text, Title, Tooltip } from '@mantine/core';
 import { IconPlus, IconRefresh } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
-import { usePermissions } from '@farmtech/shared/hooks';
 
 type ButtonProps = {
   btnTitle?: string;

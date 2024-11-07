@@ -6,7 +6,14 @@ type Props = {
 };
 
 export const AuthenticationButton = (props: Props) => (
-  <Button fullWidth mt="xl" size="md" type="submit" loading={props.isLoading} disabled={props.isLoading}>
+  <Button
+    fullWidth
+    mt="xl"
+    size="md"
+    type="submit"
+    loading={props.isLoading}
+    disabled={props.isLoading}
+  >
     {props.title}
   </Button>
 );

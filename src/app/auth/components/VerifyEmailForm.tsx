@@ -34,7 +34,7 @@ export const VerifyEmailForm = () => {
             title: 'Email verified successfully',
             message: 'Email verified successfully',
           });
-          login(data?.data?.token , data?.data?.refreshToken);
+          login(data?.data?.token, data?.data?.refreshToken);
           navigate('/dashboard');
         },
         onError: (err: any) => {
@@ -56,7 +56,7 @@ export const VerifyEmailForm = () => {
           message: 'Otp re-send successfully',
         });
       },
-      onError: (err:any) => {
+      onError: (err: any) => {
         notifications.show({
           color: 'red',
           title: 'Error',

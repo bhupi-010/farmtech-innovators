@@ -1,10 +1,10 @@
-import { Anchor, Checkbox, Group, PasswordInput, TextInput, rem } from '@mantine/core';
+import { Anchor, Checkbox, Group, PasswordInput, rem, TextInput } from '@mantine/core';
 import { useForm, yupResolver } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthenticationButton } from './AuthenticationButton';
-import { useLogin, useAuth } from '../hooks';
+import { useAuth, useLogin } from '../hooks';
 import { IconAt } from '@tabler/icons-react';
 import { Login, LoginSchema } from '../schema';
 

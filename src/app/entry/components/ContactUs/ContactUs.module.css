@@ -1,58 +1,57 @@
 .wrapper {
     min-height: rem(400px);
-   background-color: var(--mantine-color-gray-4);
+    background-color: var(--mantine-color-gray-4);
     border-radius: var(--mantine-radius-md);
     padding: calc(var(--mantine-spacing-xl) * 2.5);
-  
-    @media (max-width: $mantine-breakpoint-sm) {
-      padding: calc(var(--mantine-spacing-xl) * 1.5);
+
+    @media (max-width: $ mantine-breakpoint-sm) {
+        padding: calc(var(--mantine-spacing-xl) * 1.5);
     }
-  }
-  
-  .title {
-    font-family:
-      Greycliff CF,
-      var(--mantine-font-family);
+}
+
+.title {
+    font-family: Greycliff CF,
+    var(--mantine-font-family);
     color: var(--mantine-color-black);
     line-height: 1;
-  }
-  
-  .description {
+}
+
+.description {
     color: var(--mantine-color-black);
     max-width: rem(300px);
-  
-    @media (max-width: $mantine-breakpoint-sm) {
-      max-width: 100%;
+
+    @media (max-width: $ mantine-breakpoint-sm) {
+        max-width: 100%;
     }
-  }
-  
-  .form {
+}
+
+.form {
     background-color: var(--mantine-color-white);
     padding: var(--mantine-spacing-xl);
     border-radius: var(--mantine-radius-md);
     box-shadow: var(--mantine-shadow-lg);
-  }
-  
-  .social {
+}
+
+.social {
     @mixin hover {
-      color: var(--mantine-color-secondary-4);
+        color: var(--mantine-color-secondary-4);
     }
-  }
-  
-  .input {
+}
+
+.input {
     background-color: var(--mantine-color-white);
     border-color: var(--mantine-color-gray-4);
     color: var(--mantine-color-black);
-  
+
     &::placeholder {
-      color: var(--mantine-color-gray-5);
+        color: var(--mantine-color-gray-5);
     }
-  }
-  
-  .inputLabel {
+}
+
+.inputLabel {
     color: var(--mantine-color-black);
-  }
-  
-  .control {
+}
+
+.control {
     background-color: var(--mantine-color-blue-6);
-  }
+}

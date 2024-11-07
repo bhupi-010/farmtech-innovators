@@ -1,12 +1,12 @@
 import React from 'react';
 import { AboutUsFeatures } from './AboutUsFeatures/AboutUsFeatures';
-import { Center, Container, Image, Text } from '@mantine/core';
+import { Image, Text } from '@mantine/core';
 
 export const AboutUs = () => {
   return (
     <>
-      <Image src={"assets/aboutUsCover.png"} alt="Hero image" />
-      <Text my={"sm"}>
+      <Image src={'assets/aboutUsCover.png'} alt="Hero image" />
+      <Text my={'sm'}>
         First, a disclaimer – the entire process of writing a blog post often takes more than a
         couple of hours, even if you can type eighty words per minute and your writing skills are
         sharp. From the seed of the idea to finally hitting “Publish,” you might spend several days

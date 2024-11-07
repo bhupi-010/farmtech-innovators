@@ -1,22 +1,22 @@
 .wrapper {
-  min-height: 100vh;
-  background-size: cover;
-  background-image: url(assets/hands.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url(assets/hands.jpg);
 }
 
 .form {
-  border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
-  min-height: 100vh;
-  max-width: rem(600px);
-  padding-top: rem(80px);
-  padding: rem(100px);
+    border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+    min-height: 100vh;
+    max-width: rem(600px);
+    padding-top: rem(80px);
+    padding: rem(100px);
 
-  @media (max-width: $mantine-breakpoint-sm) {
-    max-width: 100%;
-  }
+    @media (max-width: $ mantine-breakpoint-sm) {
+        max-width: 100%;
+    }
 }
 
 .title {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  font-family: Greycliff CF, var(--mantine-font-family);
+    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    font-family: Greycliff CF, var(--mantine-font-family);
 }

@@ -8,7 +8,6 @@ export const ResetPasswordSchema = yup.object().shape({
 
 export type ResetPassword = yup.InferType<typeof ResetPasswordSchema>;
 
-
 export const LoginSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
   // userName : yup.string().required('User Name is required'),

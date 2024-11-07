@@ -1,387 +1,387 @@
-    [
-        {
-            "id": 1,
-            "name": "Bhojpur",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 2,
-            "name": "Dhankuta",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 3,
-            "name": "Ilam",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 4,
-            "name": "Jhapa",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 5,
-            "name": "Khotang",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 6,
-            "name": "Morang",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 7,
-            "name": "Okhaldhunga",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 8,
-            "name": "Panchthar",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 9,
-            "name": "Sankhuwasabha",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 10,
-            "name": "Solukhumbu",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 11,
-            "name": "Sunsari",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 12,
-            "name": "Taplejung",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 13,
-            "name": "Terhathum",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 14,
-            "name": "Udayapur",
-            "province_id": "Koshi"
-        },
-        {
-            "id": 15,
-            "name": "Bara",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 16,
-            "name": "Dhanusha",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 17,
-            "name": "Mahottari",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 18,
-            "name": "Parsa",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 19,
-            "name": "Rautahat",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 20,
-            "name": "Saptari",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 21,
-            "name": "Sarlahi",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 22,
-            "name": "Siraha",
-            "province_id": "Madhesh"
-        },
-        {
-            "id": 23,
-            "name": "Bhaktapur",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 24,
-            "name": "Chitwan",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 25,
-            "name": "Dhading",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 26,
-            "name": "Dolakha",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 27,
-            "name": "Kathmandu",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 28,
-            "name": "Kavrepalanchok",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 29,
-            "name": "Lalitpur",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 30,
-            "name": "Makwanpur",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 31,
-            "name": "Nuwakot",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 32,
-            "name": "Ramechhap",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 33,
-            "name": "Rasuwa",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 34,
-            "name": "Sindhuli",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 35,
-            "name": "Sindhupalchok",
-            "province_id": "Bagmati"
-        },
-        {
-            "id": 36,
-            "name": "Baglung",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 37,
-            "name": "Gorkha",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 38,
-            "name": "Kaski",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 39,
-            "name": "Lamjung",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 40,
-            "name": "Manang",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 41,
-            "name": "Mustang",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 42,
-            "name": "Myagdi",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 43,
-            "name": "Nawalpur",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 44,
-            "name": "Parbat",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 45,
-            "name": "Syangja",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 46,
-            "name": "Tanahun",
-            "province_id": "Gandaki"
-        },
-        {
-            "id": 47,
-            "name": "Arghakhanchi",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 48,
-            "name": "Banke",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 49,
-            "name": "Bardiya",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 50,
-            "name": "Dang Deukhuri",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 51,
-            "name": "Eastern Rukum",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 52,
-            "name": "Gulmi",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 53,
-            "name": "Kapilvastu",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 54,
-            "name": "Parasi",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 55,
-            "name": "Palpa",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 56,
-            "name": "Pyuthan",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 57,
-            "name": "Rolpa",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 58,
-            "name": "Rupandehi",
-            "province_id": "Lumbini"
-        },
-        {
-            "id": 59,
-            "name": "Dailekh",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 60,
-            "name": "Dolpa",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 61,
-            "name": "Humla",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 62,
-            "name": "Jajarkot",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 63,
-            "name": "Jumla",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 64,
-            "name": "Kalikot",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 65,
-            "name": "Mugu",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 66,
-            "name": "Salyan",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 67,
-            "name": "Surkhet",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 68,
-            "name": "Western Rukum",
-            "province_id": "Karnali"
-        },
-        {
-            "id": 69,
-            "name": "Achham",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 70,
-            "name": "Baitadi",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 71,
-            "name": "Bajhang",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 72,
-            "name": "Bajura",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 73,
-            "name": "Dadeldhura",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 74,
-            "name": "Darchula",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 75,
-            "name": "Doti",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 76,
-            "name": "Kailali",
-            "province_id": "Sudurpashchim"
-        },
-        {
-            "id": 77,
-            "name": "Kanchanpur",
-            "province_id": "Sudurpashchim"
-        }
-    ]
+[
+  {
+    "id": 1,
+    "name": "Bhojpur",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 2,
+    "name": "Dhankuta",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 3,
+    "name": "Ilam",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 4,
+    "name": "Jhapa",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 5,
+    "name": "Khotang",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 6,
+    "name": "Morang",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 7,
+    "name": "Okhaldhunga",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 8,
+    "name": "Panchthar",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 9,
+    "name": "Sankhuwasabha",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 10,
+    "name": "Solukhumbu",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 11,
+    "name": "Sunsari",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 12,
+    "name": "Taplejung",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 13,
+    "name": "Terhathum",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 14,
+    "name": "Udayapur",
+    "province_id": "Koshi"
+  },
+  {
+    "id": 15,
+    "name": "Bara",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 16,
+    "name": "Dhanusha",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 17,
+    "name": "Mahottari",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 18,
+    "name": "Parsa",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 19,
+    "name": "Rautahat",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 20,
+    "name": "Saptari",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 21,
+    "name": "Sarlahi",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 22,
+    "name": "Siraha",
+    "province_id": "Madhesh"
+  },
+  {
+    "id": 23,
+    "name": "Bhaktapur",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 24,
+    "name": "Chitwan",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 25,
+    "name": "Dhading",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 26,
+    "name": "Dolakha",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 27,
+    "name": "Kathmandu",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 28,
+    "name": "Kavrepalanchok",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 29,
+    "name": "Lalitpur",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 30,
+    "name": "Makwanpur",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 31,
+    "name": "Nuwakot",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 32,
+    "name": "Ramechhap",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 33,
+    "name": "Rasuwa",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 34,
+    "name": "Sindhuli",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 35,
+    "name": "Sindhupalchok",
+    "province_id": "Bagmati"
+  },
+  {
+    "id": 36,
+    "name": "Baglung",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 37,
+    "name": "Gorkha",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 38,
+    "name": "Kaski",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 39,
+    "name": "Lamjung",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 40,
+    "name": "Manang",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 41,
+    "name": "Mustang",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 42,
+    "name": "Myagdi",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 43,
+    "name": "Nawalpur",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 44,
+    "name": "Parbat",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 45,
+    "name": "Syangja",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 46,
+    "name": "Tanahun",
+    "province_id": "Gandaki"
+  },
+  {
+    "id": 47,
+    "name": "Arghakhanchi",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 48,
+    "name": "Banke",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 49,
+    "name": "Bardiya",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 50,
+    "name": "Dang Deukhuri",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 51,
+    "name": "Eastern Rukum",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 52,
+    "name": "Gulmi",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 53,
+    "name": "Kapilvastu",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 54,
+    "name": "Parasi",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 55,
+    "name": "Palpa",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 56,
+    "name": "Pyuthan",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 57,
+    "name": "Rolpa",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 58,
+    "name": "Rupandehi",
+    "province_id": "Lumbini"
+  },
+  {
+    "id": 59,
+    "name": "Dailekh",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 60,
+    "name": "Dolpa",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 61,
+    "name": "Humla",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 62,
+    "name": "Jajarkot",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 63,
+    "name": "Jumla",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 64,
+    "name": "Kalikot",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 65,
+    "name": "Mugu",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 66,
+    "name": "Salyan",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 67,
+    "name": "Surkhet",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 68,
+    "name": "Western Rukum",
+    "province_id": "Karnali"
+  },
+  {
+    "id": 69,
+    "name": "Achham",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 70,
+    "name": "Baitadi",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 71,
+    "name": "Bajhang",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 72,
+    "name": "Bajura",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 73,
+    "name": "Dadeldhura",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 74,
+    "name": "Darchula",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 75,
+    "name": "Doti",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 76,
+    "name": "Kailali",
+    "province_id": "Sudurpashchim"
+  },
+  {
+    "id": 77,
+    "name": "Kanchanpur",
+    "province_id": "Sudurpashchim"
+  }
+]

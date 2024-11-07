@@ -1,16 +1,5 @@
-import {
-  Badge,
-  Group,
-  Title,
-  Text,
-  Card,
-  SimpleGrid,
-  Container,
-  rem,
-  useMantineTheme,
-  Center,
-} from '@mantine/core';
-import { IconGauge, IconUser, IconCookie } from '@tabler/icons-react';
+import { Card, Center, rem, SimpleGrid, Text, Title, useMantineTheme } from '@mantine/core';
+import { IconCookie, IconGauge, IconUser } from '@tabler/icons-react';
 import classes from './AboutUsFeatures.module.css';
 
 const mockdata = [
@@ -57,11 +46,11 @@ export function AboutUsFeatures() {
       <Title order={2} className={classes.title} ta="center" mt="sm">
         Integrate effortlessly with any technology stack
       </Title>
-   <Center>
-      <Text c="dimmed"   mt="md">
-        Every once in a while, you’ll see a Golbat that’s missing some fangs. This happens when
-        hunger drives it to try biting a Steel-type Pokémon.
-      </Text>
+      <Center>
+        <Text c="dimmed" mt="md">
+          Every once in a while, you’ll see a Golbat that’s missing some fangs. This happens when
+          hunger drives it to try biting a Steel-type Pokémon.
+        </Text>
       </Center>
       <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl" mt={50}>
         {features}

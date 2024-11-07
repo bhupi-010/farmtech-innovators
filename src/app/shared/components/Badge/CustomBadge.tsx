@@ -10,25 +10,25 @@ const STATUS_MAP: { [key: string]: string } = {
   completed: 'green',
   verified: 'green',
   resolved: 'green',
-  payment_verified : 'green',
-  payment_completed : 'green',
-  registered:'green',
-  active : 'green',
+  payment_verified: 'green',
+  payment_completed: 'green',
+  registered: 'green',
+  active: 'green',
   allocated: 'orange',
   initiated: 'orange',
-  cancel: 'red',  
+  cancel: 'red',
   cancelled: 'red',
   rejected: 'red',
   failed: 'red',
-  payment_failed : 'red',
-  verification_failed : 'red',
+  payment_failed: 'red',
+  verification_failed: 'red',
 };
 
 export const CustomBadge = ({ status = 'pending' }) => {
-  let label = status?.replace(/_/g, ' ')
+  let label = status?.replace(/_/g, ' ');
 
   const color = STATUS_MAP[status?.toLowerCase()] ?? 'yellow';
-  
+
   return (
     <Badge color={color} variant="light">
       {label ?? 'pending'}

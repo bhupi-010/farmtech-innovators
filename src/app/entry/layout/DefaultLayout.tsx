@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer';
-import classes from './Layout.module.css';
 import { useWindowScroll } from '@mantine/hooks';
 import { Container } from '@mantine/core';
 
@@ -19,7 +18,9 @@ export const DefaultLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <Container size={'xl'} py={"md"}>{children}</Container>
+      <Container size={'xl'} py={'md'}>
+        {children}
+      </Container>
       <Footer />
     </>
   );

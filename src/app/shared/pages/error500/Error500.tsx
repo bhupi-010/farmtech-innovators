@@ -1,4 +1,4 @@
-import { Container, Title, Text, Button, Group, Stack, Center } from '@mantine/core';
+import { Button, Center, Container, Group, Stack, Text, Title } from '@mantine/core';
 import classes from './ServerError.module.css';
 import { useNavigate } from 'react-router-dom';
 

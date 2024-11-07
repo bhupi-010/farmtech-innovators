@@ -1,5 +1,5 @@
-import { Container, Paper } from '@mantine/core';
-import React, { ReactNode, HTMLProps } from 'react';
+import { Paper } from '@mantine/core';
+import React, { HTMLProps, ReactNode } from 'react';
 
 interface PaperWrapperProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
@@ -10,4 +10,3 @@ export const PaperWrapper: React.FC<PaperWrapperProps> = ({ children }) => (
     {children}
   </Paper>
 );
-

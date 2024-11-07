@@ -1,4 +1,4 @@
-import { Group, Button } from '@mantine/core';
+import { Button, Group } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
@@ -20,7 +20,7 @@ export const FormButton = ({
   handleSubmit,
   disabled,
   cancelBtnTitle,
-  submitBtnTitle
+  submitBtnTitle,
 }: Props) => {
   const navigate = useNavigate();
   const handleClick = () => {
@@ -32,14 +32,28 @@ export const FormButton = ({
       navigate(-1);
     }
   };
-  const cancelTitleClassName = cancelBtnTitle?.replace(/\s+/g, '-').toLowerCase() || "cancel-btn";
-  const submitBtnTitleClassName = submitBtnTitle?.replace(/\s+/g, '-').toLowerCase() || 'submit-btn';
+  const cancelTitleClassName = cancelBtnTitle?.replace(/\s+/g, '-').toLowerCase() || 'cancel-btn';
+  const submitBtnTitleClassName =
+    submitBtnTitle?.replace(/\s+/g, '-').toLowerCase() || 'submit-btn';
   return (
     <Group justify={justify} mt="xl">
-      <Button size="sm" color="gray" className={cancelTitleClassName} variant="filled" onClick={handleClick}>
+      <Button
+        size="sm"
+        color="gray"
+        className={cancelTitleClassName}
+        variant="filled"
+        onClick={handleClick}
+      >
         {cancelBtnTitle ? cancelBtnTitle : 'Cancel'}
       </Button>
-      <Button type="submit" size="sm" className={submitBtnTitleClassName} loading={isPending} onSubmit={handleSubmit} disabled={disabled}>
+      <Button
+        type="submit"
+        size="sm"
+        className={submitBtnTitleClassName}
+        loading={isPending}
+        onSubmit={handleSubmit}
+        disabled={disabled}
+      >
         {submitBtnTitle ? submitBtnTitle : 'Submit'}
       </Button>
     </Group>

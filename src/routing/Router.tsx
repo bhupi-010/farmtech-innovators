@@ -8,8 +8,7 @@ import {
   VerifyEmailPage,
 } from '@farmtech/auth';
 import { AboutUsPage, ContactUsPage, HomePage } from '@farmtech/entry';
-import { PrivateRoutes } from './PrivateRoutes';
-import { Error500, PAGE_URL, PageNotFound } from '@farmtech/shared';
+import { PAGE_URL } from '@farmtech/shared';
 import { RootBoundary } from '@farmtech/shared/pages/ErrorBoundary';
 import { AuthRoutes } from './AuthRoutes';
 
@@ -77,6 +76,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 export function Router() {
   return <RouterProvider router={router} />;
 }

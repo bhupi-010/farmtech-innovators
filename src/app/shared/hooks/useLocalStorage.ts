@@ -38,6 +38,6 @@ export const useLocalStorage = (key: string, initialValue?: any) => {
 export const useClearLocalStorage = () => {
   const clearLocalStorage = () => {
     return localStorage.clear();
-  }
-  return clearLocalStorage
-}
+  };
+  return clearLocalStorage;
+};

@@ -3,8 +3,8 @@ export * from './userButton/UserButton';
 export * from './FormButton/FormButton';
 export * from './LoadingIndicator';
 export * from './NothingFound';
-export * from './PageHeader'
-export * from './PaperWrapper'
-export * from './AttachmentField'
-export * from './Badge'
+export * from './PageHeader';
+export * from './PaperWrapper';
+export * from './AttachmentField';
+export * from './Badge';
 export * from './InputField';

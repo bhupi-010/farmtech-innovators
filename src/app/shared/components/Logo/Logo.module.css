@@ -1,9 +1,9 @@
- .logo {
+.logo {
     max-width: rem(205px);
-  
-    @media (max-width: $mantine-breakpoint-sm) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+    @media (max-width: $ mantine-breakpoint-sm) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-  }
+}

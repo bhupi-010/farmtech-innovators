@@ -4,14 +4,14 @@ export interface User {
   firstName: string;
   lastName: string;
   mobileNumber: number;
-  role : {
-    name : string;
-    id : number;
-    permissons : Permissions[]
-  }
+  role: {
+    name: string;
+    id: number;
+    permissons: Permissions[];
+  };
 }
 
 export interface Permissions {
-  id : number;
-  name : string;
+  id: number;
+  name: string;
 }

@@ -1,4 +1,4 @@
-import { Box, Progress, PasswordInput, Group, Text, Center } from '@mantine/core';
+import { Box, Center, Group, PasswordInput, Progress, Text } from '@mantine/core';
 import { IconCheck, IconX } from '@tabler/icons-react';
 
 function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
@@ -31,8 +31,18 @@ function getStrength(password: string) {
   return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 0);
 }
 
-export const PasswordInputField = ({ form, size = 'md', name, label }: { form: any, size?: string, name?: string, label?: string }) => {
-  const fieldName = name ?? 'password'
+export const PasswordInputField = ({
+  form,
+  size = 'md',
+  name,
+  label,
+}: {
+  form: any;
+  size?: string;
+  name?: string;
+  label?: string;
+}) => {
+  const fieldName = name ?? 'password';
   const passwordValue = form.values[fieldName];
   const strength = getStrength(passwordValue);
   const checks = requirements.map((requirement, index) => (
@@ -51,8 +61,8 @@ export const PasswordInputField = ({ form, size = 'md', name, label }: { form: a
           passwordValue.length > 0 && index === 0
             ? 100
             : strength >= ((index + 1) / 4) * 100
-              ? 100
-              : 0
+            ? 100
+            : 0
         }
         color={strength > 80 ? 'teal' : strength > 50 ? 'yellow' : 'red'}
         key={index}

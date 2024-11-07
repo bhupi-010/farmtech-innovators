@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { AuthContext } from '@farmtech/auth';
 import { apiClient } from '@farmtech/shared';

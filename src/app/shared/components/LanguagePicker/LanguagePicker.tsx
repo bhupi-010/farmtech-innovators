@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UnstyledButton, Menu, Image, Group, Box } from '@mantine/core';
+import { Box, Group, Image, Menu, UnstyledButton } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import english from '../../../../../public/assets/english.png';
 import french from '../../../../../public/assets/french.png';

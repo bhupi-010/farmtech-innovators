@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Loader, Select } from '@mantine/core';
 import { useScheme } from '@farmtech/investment';
 

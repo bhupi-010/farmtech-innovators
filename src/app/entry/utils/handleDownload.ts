@@ -1,24 +1,24 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const handleDownload = (image: string, fileName?: string) => {
-    const url = `${API_URL}/${image}`;
-    fetch(url)
-        .then((response) => response.blob())
-        .then((blob) => {
-            const url = window.URL.createObjectURL(new Blob([blob]));
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = fileName || "downloaded-file";
-            document.body.appendChild(link);
+  const url = `${API_URL}/${image}`;
+  fetch(url)
+    .then((response) => response.blob())
+    .then((blob) => {
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName || 'downloaded-file';
+      document.body.appendChild(link);
 
-            link.click();
+      link.click();
 
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-        })
-        .catch((error) => {
-            console.error("Error fetching the file:", error);
-        });
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    })
+    .catch((error) => {
+      console.error('Error fetching the file:', error);
+    });
 };
 
 export const handlePdfDownload = (filePath: string, fileName?: string) => {
@@ -51,4 +51,3 @@ export const handlePdfDownload = (filePath: string, fileName?: string) => {
       console.error('Error fetching the PDF file:', error);
     });
 };
-

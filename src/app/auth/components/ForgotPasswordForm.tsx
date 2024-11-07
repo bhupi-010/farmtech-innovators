@@ -1,10 +1,10 @@
-import { TextInput, rem } from '@mantine/core';
+import { rem, TextInput } from '@mantine/core';
 import { useForm, yupResolver } from '@mantine/form';
 
 import { AuthenticationButton } from './AuthenticationButton';
 import { useForgotPassword } from '../hooks';
 import { notifications } from '@mantine/notifications';
-import { IconAt, IconNumber } from '@tabler/icons-react';
+import { IconAt } from '@tabler/icons-react';
 import { ForgotPasswordSchema } from '../schema';
 
 export const ForgotPasswordForm = () => {

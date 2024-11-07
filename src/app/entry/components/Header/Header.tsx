@@ -1,11 +1,9 @@
-import { Group, Button, Box, Burger, useMantineTheme, Container, Paper } from '@mantine/core';
+import { Box, Burger, Button, Group, Paper } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo, UserButton } from '@farmtech/shared';
 import { useAuth } from '@farmtech/auth';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
-import i18n from 'i18next'; // Import i18n instance
 import classes from './Header.module.css';
 import { LanguagePicker } from '@farmtech/shared/components/LanguagePicker/LanguagePicker';
 
@@ -18,10 +16,10 @@ export function Header() {
   return (
     <Box>
       <header className={classes.header}>
-        <Paper px={"lg"}  h="100%">
+        <Paper px={'lg'} h="100%">
           <Group justify="space-between" h="100%">
             <Group gap="lg">
-            <Logo />
+              <Logo />
               <Link
                 to="/"
                 className={`${location.pathname === '/' ? classes.active : classes.link}`}
@@ -42,9 +40,9 @@ export function Header() {
               </Link>
             </Group>
             {/* Language Switcher */}
-           
+
             <Group justify="space-between" align="center">
-            <LanguagePicker />
+              <LanguagePicker />
               {isAuthenticated ? (
                 <UserButton />
               ) : (

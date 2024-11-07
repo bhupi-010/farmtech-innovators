@@ -1,4 +1,4 @@
-import { Container, Title, Center, Text, Group } from '@mantine/core';
+import { Center, Container, Group, Text, Title } from '@mantine/core';
 import classes from './PageWrapper.module.css';
 import React from 'react';
 
@@ -21,7 +21,7 @@ export const PageWrapper = ({ children, title, description }: Props) => {
             {description}
           </Text>
         </Center>
-        <Group mb='50'></Group>
+        <Group mb="50"></Group>
         {children}
       </Container>
     </div>

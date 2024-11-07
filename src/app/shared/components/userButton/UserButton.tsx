@@ -1,5 +1,5 @@
-import { UnstyledButton, Group, Avatar, rem, Menu, Text } from '@mantine/core';
-import { IconChevronRight, IconGauge, IconLogout, IconUser } from '@tabler/icons-react';
+import { Avatar, Group, Menu, rem, Text, UnstyledButton } from '@mantine/core';
+import { IconChevronRight, IconLogout, IconUser } from '@tabler/icons-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@farmtech/auth';
 import classes from './UserButton.module.css';

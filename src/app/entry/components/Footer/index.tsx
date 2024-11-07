@@ -1,5 +1,4 @@
-import { Text, Container, Stack } from '@mantine/core';
-import { Logo, copyrightName } from '@farmtech/shared';
+import { Container, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 
 import classes from './Footer.module.css';

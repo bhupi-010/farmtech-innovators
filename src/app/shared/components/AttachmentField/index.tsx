@@ -1,4 +1,4 @@
-import { Box, CloseButton, FileInput, Group, Image, Loader, Text, rem } from '@mantine/core';
+import { Box, CloseButton, FileInput, Group, Image, Loader, rem, Text } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconCheck, IconUpload } from '@tabler/icons-react';
 import { useUploadAttachment } from '@farmtech/shared';

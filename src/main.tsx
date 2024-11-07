@@ -2,8 +2,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { datadogRum } from '@datadog/browser-rum';
 
-if(process.env.NODE_ENV === 'production') {
-    datadogRum.init({
+if (process.env.NODE_ENV === 'production') {
+  datadogRum.init({
     applicationId: import.meta.env.VITE_DATADOG_APPID,
     clientToken: import.meta.env.VITE_DATADOG_SECRET,
     // `site` refers to the Datadog site parameter of your organization
@@ -19,7 +19,7 @@ if(process.env.NODE_ENV === 'production') {
     trackResources: true,
     trackLongTasks: true,
     defaultPrivacyLevel: 'mask-user-input',
-    });
+  });
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
