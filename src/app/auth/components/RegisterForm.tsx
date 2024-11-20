@@ -76,7 +76,7 @@ export const RegisterForm = () => {
           <Link to="/forgot-password">Forgot password?</Link>
         </Anchor>
       </Group>
-      <AuthenticationButton title="Login" isLoading={isPending} />
+      <AuthenticationButton title="Register" isLoading={isPending} />
     </form>
   );
 };

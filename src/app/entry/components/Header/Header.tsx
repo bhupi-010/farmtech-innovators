@@ -16,7 +16,7 @@ export function Header() {
   return (
     <Box>
       <header className={classes.header}>
-        <Paper px={'lg'} h="100%">
+        <Paper h="100%">
           <Group justify="space-between" h="100%">
             <Group gap="lg">
               <Logo />

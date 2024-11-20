@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer';
 import { useWindowScroll } from '@mantine/hooks';
-import { Container } from '@mantine/core';
+import { Container, Paper } from '@mantine/core';
 
 type Props = {
   children: React.ReactNode;
@@ -18,9 +18,9 @@ export const DefaultLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <Container size={'xl'} py={'md'}>
+      <Paper px={'xl'} py={'md'}>
         {children}
-      </Container>
+      </Paper>
       <Footer />
     </>
   );

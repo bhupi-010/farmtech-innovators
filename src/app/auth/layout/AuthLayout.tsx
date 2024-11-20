@@ -25,7 +25,7 @@ export const AuthLayout = (props: Props) => {
           </Link>
         </Group>
         <Group justify="center" h="100%">
-          <Logo />
+          <Logo height={150} width={150} />
         </Group>
         <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
           {pageTitle}

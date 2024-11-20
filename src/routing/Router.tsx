@@ -7,7 +7,7 @@ import {
   ResetPasswordPage,
   VerifyEmailPage,
 } from '@farmtech/auth';
-import { AboutUsPage, ContactUsPage, HomePage } from '@farmtech/entry';
+import { AboutUsPage, BlogViewPage, ContactUsPage, HomePage, NewsViewAllPage, NewsViewPage } from '@farmtech/entry';
 import { PAGE_URL } from '@farmtech/shared';
 import { RootBoundary } from '@farmtech/shared/pages/ErrorBoundary';
 import { AuthRoutes } from './AuthRoutes';
@@ -28,6 +28,18 @@ const router = createBrowserRouter([
       {
         path: PAGE_URL.ABOUTUS,
         element: <AboutUsPage />,
+      },
+      {
+        path: 'blog/:id',
+        element: <BlogViewPage />,
+      },
+      {
+        path: 'news/:id',
+        element: <NewsViewPage />,
+      },
+      {
+        path: 'news',
+        element: <NewsViewAllPage />,
       },
       {
         path: '',
