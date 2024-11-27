@@ -6,16 +6,16 @@ import { notifications } from '@mantine/notifications';
 interface User {
   id: number;
   email: string;
-  mobileNumber: string;
-  firstName?: string;
-  lastName?: string;
+  firstName: string;
+  lastName: string;
+  address: string;
   password?: string;
 }
 
 interface AuthContextType {
   user: User;
   isAuthenticated: boolean;
-  login: (token: string, refreshToken?: string) => void;
+  login: (access: string, refresh?: string) => void;
   logout: () => void;
 }
 
@@ -25,17 +25,19 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setStoredUser] = useLocalStorage('user', null);
   const [token, setStoredToken] = useLocalStorage('token', null);
-
-  const roleKey = user?.role?.key;
+  const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', null);
 
   const parseUser = (token: string) => {
     const parsedUser = jwtDecode(token);
     setStoredUser(parsedUser);
   };
 
-  const login = (token: string) => {
-    setStoredToken(token);
-    parseUser(token);
+  const login = (access: string, refresh?: string) => {
+    setStoredToken(access);
+    // parseUser(access);
+    if(refresh){
+      setRefreshToken(refreshToken);
+    }
   };
 
   const logout = () => {

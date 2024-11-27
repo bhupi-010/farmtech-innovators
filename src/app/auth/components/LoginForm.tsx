@@ -7,9 +7,10 @@ import { AuthenticationButton } from './AuthenticationButton';
 import { useAuth, useLogin } from '../hooks';
 import { IconAt } from '@tabler/icons-react';
 import { Login, LoginSchema } from '../schema';
-
+import { useLocalStorage } from '@farmtech/shared';
 export const LoginForm = () => {
   const { login } = useAuth();
+  const [user, setStoredUser] = useLocalStorage('user', null);
   const { mutate, isPending } = useLogin();
   const navigate = useNavigate();
 
@@ -28,19 +29,27 @@ export const LoginForm = () => {
       { email, password },
       {
         onSuccess: (data: any) => {
-          login(data?.data?.token);
+          const user = {
+            id: data?.data?.data?.id,
+            email: data?.data?.data?.email,
+            firstName: data?.data?.data?.firstName,
+            lastName: data?.data?.data?.lastName,
+          };
+          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh);
+          setStoredUser(data?.data?.data);
+          if (data?.data?.data?.isEmailVerified === false) {
+            navigate('/verify-email/' + data?.data?.data?.id);
+            return;
+          }
+
           notifications.show({
             color: 'teal',
             title: 'Logged in successfully',
             message: 'Logged in successfully',
           });
-          navigate('/dashboard');
+          navigate('/');
         },
         onError: (err: any) => {
-          if (err && err?.user?.id) {
-            navigate('/verify-email/' + err.user.id);
-            return;
-          }
           notifications.show({
             color: 'red',
             title: 'Error',

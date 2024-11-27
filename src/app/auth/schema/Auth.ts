@@ -8,6 +8,17 @@ export const ResetPasswordSchema = yup.object().shape({
 
 export type ResetPassword = yup.InferType<typeof ResetPasswordSchema>;
 
+export const SignUpSchema = yup.object().shape({
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().required('Password is required'),
+  confirmPassword: yup.string().oneOf([yup.ref('password')], 'Passwords must match'),
+  firstName: yup.string().required('First Name is required'),
+  lastName: yup.string().required('Last Name is required'),
+  address: yup.string().required('Address is required'),
+});
+
+export type SignUp = yup.InferType<typeof SignUpSchema>;
+
 export const LoginSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
   // userName : yup.string().required('User Name is required'),

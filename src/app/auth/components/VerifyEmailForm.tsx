@@ -9,7 +9,8 @@ import { useAuth, useEmailResendOtp, useVerifyEmail } from '../hooks';
 export const VerifyEmailForm = () => {
   const { login } = useAuth();
   const params = useParams();
-  const id = Number(params?.id);
+  const id = params?.id;
+  console.log('id', id);
   const { mutate, isPending } = useVerifyEmail();
   const resendOtpMutation = useEmailResendOtp();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export const VerifyEmailForm = () => {
     const { otp } = values;
 
     mutate(
-      { otp, id },
+      { otp },
       {
         onSuccess: (data: any) => {
           notifications.show({
@@ -34,8 +35,8 @@ export const VerifyEmailForm = () => {
             title: 'Email verified successfully',
             message: 'Email verified successfully',
           });
-          login(data?.data?.token, data?.data?.refreshToken);
-          navigate('/dashboard');
+          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh);
+          navigate('/');
         },
         onError: (err: any) => {
           notifications.show({

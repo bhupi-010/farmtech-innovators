@@ -15,20 +15,30 @@ export function useAuth() {
 export const useLogin = () => {
   return useMutation({
     mutationFn: async ({ email, password }: { email: string; password: string }) =>
-      await apiClient.post('/login', {
+      await apiClient.post('/user/login/', {
         email,
         password,
       }),
   });
 };
 
-const register = async ({ email, password, firstName, lastName, mobileNumber }: any) => {
-  return await apiClient.post('/signup', {
+const register = async ({
+  email,
+  password,
+  confirmPassword,
+  address,
+  firstName,
+  lastName,
+  mobileNumber,
+}: any) => {
+  return await apiClient.post('/user/register/', {
     email,
     password,
+    confirmPassword,
     firstName,
     lastName,
     mobileNumber,
+    address,
   });
 };
 
@@ -62,10 +72,9 @@ export const useResetPassword = () => {
 
 export const useVerifyEmail = () => {
   return useMutation({
-    mutationFn: async ({ otp, id }: { otp: string; id: number }) => {
-      return await apiClient.post(`/verify-email`, {
+    mutationFn: async ({ otp }: { otp: string }) => {
+      return await apiClient.post(`/api/user-verification/verify-email-otp/`, {
         otp: String(otp),
-        userId: id,
       });
     },
   });
@@ -88,8 +97,8 @@ export const useLoginByOtp = () => {
 
 export const useEmailResendOtp = () => {
   return useMutation({
-    mutationFn: async (userId: number) => {
-      return await apiClient.post('/resend-verification-otp', { userId });
+    mutationFn: async (userId: any) => {
+      return await apiClient.post('/user-verification/send-email-otp/');
     },
   });
 };

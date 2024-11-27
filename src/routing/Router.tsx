@@ -7,7 +7,7 @@ import {
   ResetPasswordPage,
   VerifyEmailPage,
 } from '@farmtech/auth';
-import { AboutUsPage, BlogViewPage, ContactUsPage, HomePage, NewsViewAllPage, NewsViewPage } from '@farmtech/entry';
+import { AboutUsPage, BlogViewPage, ContactUsPage, HomePage, NewsViewAllPage, NewsViewPage, ProfilePage, RegisterFarmlandAndSoilPage } from '@farmtech/entry';
 import { PAGE_URL } from '@farmtech/shared';
 import { RootBoundary } from '@farmtech/shared/pages/ErrorBoundary';
 import { AuthRoutes } from './AuthRoutes';
@@ -40,6 +40,15 @@ const router = createBrowserRouter([
       {
         path: 'news',
         element: <NewsViewAllPage />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
+      },
+      {
+        path: '/register-land-soil',
+        element: <RegisterFarmlandAndSoilPage />,
+
       },
       {
         path: '',

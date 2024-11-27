@@ -6,45 +6,42 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthenticationButton } from './AuthenticationButton';
 import { useAuth, useRegister } from '../hooks';
 import { IconAt } from '@tabler/icons-react';
-import { Login, LoginSchema } from '../schema';
+import { SignUp, SignUpSchema } from '../schema';
 
 export const RegisterForm = () => {
-  const { login } = useAuth();
   const { mutate, isPending } = useRegister();
   const navigate = useNavigate();
 
-  const form = useForm<Login>({
+  const form = useForm<SignUp>({
     initialValues: {
       email: '',
       password: '',
+      confirmPassword: '',
+      firstName: '',
+      lastName: '',
+      address: '',
     },
-    validate: yupResolver(LoginSchema),
+    validate: yupResolver(SignUpSchema),
   });
 
-  const handleSubmit = (values: Login) => {
-    const { email, password } = values;
-
+  const handleSubmit = (values: SignUp) => {
+    const { email, password, confirmPassword, firstName, lastName, address } = values;
     mutate(
-      { email, password },
+      { email, password, confirmPassword, firstName, lastName, address },
       {
         onSuccess: (data: any) => {
-          login(data?.data?.token);
           notifications.show({
             color: 'teal',
-            title: 'Logged in successfully',
-            message: 'Logged in successfully',
+            title: ' User registered successfully',
+            message: 'User registered successfully',
           });
-          navigate('/dashboard');
+          navigate('/login');
         },
         onError: (err: any) => {
-          if (err && err?.user?.id) {
-            navigate('/verify-email/' + err.user.id);
-            return;
-          }
           notifications.show({
             color: 'red',
             title: 'Error',
-            message: err?.message ? err?.message : 'Failed to login! Please try again later',
+            message: err?.message ? err?.message : 'Failed to register! Please try again later',
           });
         },
       }
@@ -70,6 +67,42 @@ export const RegisterForm = () => {
         withAsterisk
         {...form.getInputProps('password')}
       />
+      <PasswordInput
+        label="Confirm Password"
+        placeholder="Your password"
+        mt="md"
+        size="md"
+        withAsterisk
+        {...form.getInputProps('confirmPassword')}
+      />
+
+      <TextInput
+        label="First Name"
+        placeholder="Enter first name"
+        mt="md"
+        size="md"
+        withAsterisk
+        {...form.getInputProps('firstName')}
+      />
+
+      <TextInput
+        label="Last Name"
+        placeholder="Enter last name"
+        mt="md"
+        size="md"
+        withAsterisk
+        {...form.getInputProps('lastName')}
+      />
+
+      <TextInput
+        label="Address"
+        placeholder="Enter address"
+        mt="md"
+        size="md"
+        withAsterisk
+        {...form.getInputProps('address')}
+      />
+
       <Group justify="space-between" mt="lg">
         <Checkbox label="Remember me" />
         <Anchor size="sm">

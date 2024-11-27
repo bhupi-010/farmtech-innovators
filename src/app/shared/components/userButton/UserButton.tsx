@@ -8,6 +8,7 @@ import { useMediaQuery } from '@mantine/hooks';
 export const UserButton = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  console.log("user", user);
   const isMobile = useMediaQuery('(max-width: 37.5em)');
 
   const handleLogout = () => {

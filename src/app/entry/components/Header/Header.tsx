@@ -1,4 +1,20 @@
-import { Box, Burger, Button, Group, Paper } from '@mantine/core';
+import {
+  Anchor,
+  Box,
+  Burger,
+  Button,
+  Center,
+  Divider,
+  Group,
+  HoverCard,
+  Paper,
+  SimpleGrid,
+  Stack,
+  Text,
+  ThemeIcon,
+  UnstyledButton,
+  useMantineTheme,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo, UserButton } from '@farmtech/shared';
@@ -6,12 +22,64 @@ import { useAuth } from '@farmtech/auth';
 import { useTranslation } from 'react-i18next';
 import classes from './Header.module.css';
 import { LanguagePicker } from '@farmtech/shared/components/LanguagePicker/LanguagePicker';
+import { IconPlant, IconPencil, IconHelp, IconMapPin, IconChevronDown } from '@tabler/icons-react';
 
 export function Header() {
   const { t } = useTranslation();
+  const theme = useMantineTheme();
   const { isAuthenticated } = useAuth();
   const location = useLocation();
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+
+  const mockdata = [
+    {
+      icon: IconMapPin,
+      title: 'Register Land & Soil Info',
+      description: 'Add and register detailed information about your land and soil.',
+      link: '/register-land-soil',
+    },
+    {
+      icon: IconPlant,
+      title: 'View Crop Recommendations',
+      description: 'Get tailored crop suggestions based on your land and soil data.',
+      link: '/recommendations',
+    },
+    {
+      icon: IconPencil,
+      title: 'Update Land Info',
+      description: 'Modify or update your existing land information.',
+      link: '/update-land-info',
+    },
+    {
+      icon: IconHelp,
+      title: 'Help & Tutorials',
+      description: 'Access guides and tutorials to help you use the platform effectively.',
+      link: '/help',
+    },
+  ];
+
+  const links = mockdata.map((item, index) => (
+    <>
+      <Link to={item.link}>
+        <UnstyledButton className={classes.subLink} key={item.title}>
+          <Group wrap="nowrap" align="flex-start">
+            <ThemeIcon size={34} variant="default" radius="md">
+              <item.icon size={22} color={theme.colors.primary[6]} />
+            </ThemeIcon>
+            <div>
+              <Text size="sm" c={theme.colors.primary[6]} fw={500}>
+                {item.title}
+              </Text>
+              <Text size="xs" maw={200} c="dimmed">
+                {item.description}
+              </Text>
+            </div>
+          </Group>
+        </UnstyledButton>
+        {index === mockdata.length - 1 ? null : <Divider />}
+      </Link>
+    </>
+  ));
 
   return (
     <Box>
@@ -26,6 +94,22 @@ export function Header() {
               >
                 {t('home')}
               </Link>
+
+              <HoverCard width={300} position="bottom" radius="md" shadow="md" withinPortal>
+                <HoverCard.Target>
+                  <a href="#" className={classes.link}>
+                    <Center inline>
+                      <Box component="span" mr={5}>
+                        Options
+                      </Box>
+                      <IconChevronDown size={16} color={theme.colors.primary[6]} />
+                    </Center>
+                  </a>
+                </HoverCard.Target>
+                <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
+                  <Stack>{links}</Stack>
+                </HoverCard.Dropdown>
+              </HoverCard>
               <Link
                 to="/about-us"
                 className={`${location.pathname === '/about-us' ? classes.active : classes.link}`}
