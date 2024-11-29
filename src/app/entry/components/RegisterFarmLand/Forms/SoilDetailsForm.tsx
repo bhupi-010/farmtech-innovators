@@ -14,7 +14,7 @@ import { FormComponent } from '../../BasicComponents';
 import * as yup from 'yup';
 import { useFormContext } from '@farmtech/entry/context';
 import { DateInput } from '@mantine/dates';
-import { useAddSoilDetails } from '@farmtech/entry/hooks';
+import { useAddSoilDetails, useEditSoilDetails } from '@farmtech/entry/hooks';
 import { notifications } from '@mantine/notifications';
 import { useNavigate } from 'react-router-dom';
 
@@ -149,11 +149,13 @@ const SoilDetailsSchema = yup.object().shape({
   ),
 });
 
-export const SoilDetailsForm: React.FC<{ nextStep: () => void; prevStep: () => void }> = ({
-  nextStep,
-  prevStep,
-}) => {
+export const SoilDetailsForm: React.FC<{
+  nextStep?: () => void;
+  prevStep?: () => void;
+  id?: string;
+}> = ({ nextStep, prevStep, id }) => {
   const addSoil = useAddSoilDetails();
+  const editSoil = useEditSoilDetails(id);
   const navigate = useNavigate();
   const { soilFormData, setSoilFormData } = useFormContext();
   const form = useForm({
@@ -162,18 +164,36 @@ export const SoilDetailsForm: React.FC<{ nextStep: () => void; prevStep: () => v
   });
 
   const handleSubmit = (values: typeof defaultSoilValues) => {
+    if (id) {
+      editSoil.mutate(values, {
+        onSuccess: (data: any) => {
+          setSoilFormData(values);
+          notifications.show({
+            color: 'blue',
+            title: 'Success',
+            message: 'Soil details updated successfully.',
+          });
+        },
+        onError: (err: any) => {
+          notifications.show({
+            color: 'red',
+            title: 'Error',
+            message: err?.message
+              ? err?.message
+              : 'Failed to update soil details! Please try again later',
+          });
+        },
+      });
+      return;
+    }
     addSoil.mutate(values, {
       onSuccess: (data: any) => {
-        nextStep();
         setSoilFormData(values);
         notifications.show({
           color: 'blue',
           title: 'Success',
           message: 'Soil details saved successfully.',
         });
-
-        navigate('/');
-        
       },
       onError: (err: any) => {
         notifications.show({
@@ -429,7 +449,7 @@ export const SoilDetailsForm: React.FC<{ nextStep: () => void; prevStep: () => v
         </FormComponent>
 
         <Group justify="justify-apart" my="xl">
-          <Button onClick={prevStep}>Back</Button>
+          { prevStep && <Button onClick={prevStep}>Back</Button>}
           <Button type="submit">Submit</Button>
         </Group>
       </FormComponent>

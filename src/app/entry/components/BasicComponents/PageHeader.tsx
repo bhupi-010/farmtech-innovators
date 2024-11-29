@@ -5,15 +5,16 @@ type PageHeaderProps = {
   title: string;
   subTitle?: string;
   mx?: string;
+  fw?: number;
 };
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ title, subTitle, mx }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ title, subTitle, mx,fw=700 }) => {
   const theme = useMantineTheme();
   const { setColorScheme, colorScheme } = useMantineColorScheme();
   return (
     <div>
       <div>
-        <Text c={colorScheme === 'dark' ? 'white' : 'black'} fw={700} size="lg">
+        <Text c={colorScheme === 'dark' ? 'white' : 'black'} fw={fw} size="lg">
           {title}
         </Text>
       </div>

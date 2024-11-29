@@ -3,7 +3,7 @@ import { notifications } from '@mantine/notifications';
 
 import { useAuth } from '@farmtech/auth';
 
-export const AuthRoutes = ({ redirectPath = '/dashboard', children }: any) => {
+export const AuthRoutes = ({ redirectPath = '/', children }: any) => {
   const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {

@@ -38,6 +38,7 @@ type FormComponentProps = {
   cardPadding?: string;
   cardShadow?: string;
   cardBackGround?: string;
+  fw?: number;
 };
 
 export const FormComponent: React.FC<FormComponentProps> = ({
@@ -55,13 +56,14 @@ export const FormComponent: React.FC<FormComponentProps> = ({
   cardBordered = true,
   cardShadow="sm",
   cardBackGround="",
+  fw
 }) => {
   return (
     <>
       {onDelete && length && length > 1 ? (
         <Grid my="md" align="end">
         <Grid.Col span={10}>
-          <PageHeader title={title} subTitle={subTitle} />
+          <PageHeader title={title} fw={fw} subTitle={subTitle} />
         </Grid.Col>
         <Grid.Col span={2}>
           <Group justify="right">
@@ -72,7 +74,7 @@ export const FormComponent: React.FC<FormComponentProps> = ({
       
       ) : addOnTable ? (
         <Group justify="space-between" pt="md" pb="xs" mx={mx}>
-          <PageHeader title={title} subTitle={subTitle} />
+          <PageHeader title={title} fw={fw} subTitle={subTitle} />
           <PrimaryButton
             link={addOnTable.link}
             buttonText={addOnTable.label}
@@ -81,7 +83,7 @@ export const FormComponent: React.FC<FormComponentProps> = ({
         </Group>
       ) : (
         <Group justify="space-between" pt="md" pb="xs" mx={mx}>
-          <PageHeader title={title} subTitle={subTitle} />
+          <PageHeader title={title} fw={fw} subTitle={subTitle} />
           {actionItems ? <SplitButton actionItems={actionItems} /> : null}
         </Group>
       )}

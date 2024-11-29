@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm, yupResolver } from '@mantine/form';
-import { Textarea, NumberInput, TextInput, Select, Group, Button, Grid } from '@mantine/core';
+import { Textarea, NumberInput, TextInput, Grid, Button, Group } from '@mantine/core';
 import { useFormContext } from '../../../context';
 import { notifications } from '@mantine/notifications';
 import * as yup from 'yup';
 import { FormComponent } from '../../BasicComponents';
-import { useAddFarmlandDetails } from '@farmtech/entry/hooks';
+import { useAddFarmlandDetails, useEditFarmlandDetails } from '@farmtech/entry/hooks';
 
 const farmlandFormSchema = yup.object().shape({
   description: yup
@@ -20,9 +20,13 @@ const farmlandFormSchema = yup.object().shape({
   postalCode: yup.string(),
 });
 
-export const FarmlandDetailsForm: React.FC<{ nextStep: () => void }> = ({ nextStep }) => {
+export const FarmlandDetailsForm: React.FC<{ nextStep?: () => void; id?: string }> = ({
+  nextStep,
+  id,
+}) => {
   const { farmlandFormData, setFarmlandFormData } = useFormContext();
   const addFarmland = useAddFarmlandDetails();
+  const editFarmland = useEditFarmlandDetails(id); // Hook for editing farmland if id is provided
   const form = useForm({
     initialValues: farmlandFormData || {
       description: '',
@@ -48,33 +52,63 @@ export const FarmlandDetailsForm: React.FC<{ nextStep: () => void }> = ({ nextSt
         postalCode: values.postalCode,
       },
     };
-    addFarmland.mutate(formattedData, {
-      onSuccess: (data: any) => {
-        nextStep();
-        setFarmlandFormData(formattedData);
-        notifications.show({
-          color: 'blue',
-          title: 'Success',
-          message: 'Farmland details saved successfully.',
-        });
-      },
-      onError: (err: any) => {
-        notifications.show({
-          color: 'red',
-          title: 'Error',
-          message: err?.message
-            ? err?.message
-            : 'Failed to save farmland details! Please try again later',
-        });
-      },
-    });
+
+    if (id) {
+      // If id is provided, call editFarmland instead of addFarmland
+      editFarmland.mutate(formattedData, {
+        onSuccess: (data: any) => {
+          if (nextStep) {
+            nextStep();
+          }
+          setFarmlandFormData(formattedData);
+          notifications.show({
+            color: 'blue',
+            title: 'Success',
+            message: 'Farmland details updated successfully.',
+          });
+        },
+        onError: (err: any) => {
+          notifications.show({
+            color: 'red',
+            title: 'Error',
+            message: err?.message
+              ? err?.message
+              : 'Failed to update farmland details! Please try again later',
+          });
+        },
+      });
+    } else {
+      // If id is not provided, call addFarmland
+      addFarmland.mutate(formattedData, {
+        onSuccess: (data: any) => {
+          if (nextStep) {
+            nextStep();
+          }
+          setFarmlandFormData(formattedData);
+          notifications.show({
+            color: 'blue',
+            title: 'Success',
+            message: 'Farmland details saved successfully.',
+          });
+        },
+        onError: (err: any) => {
+          notifications.show({
+            color: 'red',
+            title: 'Error',
+            message: err?.message
+              ? err?.message
+              : 'Failed to save farmland details! Please try again later',
+          });
+        },
+      });
+    }
   };
 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       <FormComponent title={'Farmland Details'}>
         <Textarea
-        my={"sm"}
+          my={'sm'}
           label="Description"
           placeholder="E.g., Fertile land near the river, used for growing rice."
           required
@@ -127,7 +161,7 @@ export const FarmlandDetailsForm: React.FC<{ nextStep: () => void }> = ({ nextSt
         </Grid>
 
         <Group justify="left" mt="xl">
-          <Button type="submit">Next</Button>
+          <Button type="submit">{nextStep ? 'Next' : 'Submit'}</Button>
         </Group>
       </FormComponent>
     </form>

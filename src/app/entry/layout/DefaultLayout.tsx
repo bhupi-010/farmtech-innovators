@@ -18,7 +18,7 @@ export const DefaultLayout = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <Paper px={'xl'} py={'md'}>
+      <Paper px={'xl'}mih={'80vh'} py={'md'}>
         {children}
       </Paper>
       <Footer />
