@@ -29,13 +29,19 @@ export const VerifyEmailForm = () => {
       { otp },
       {
         onSuccess: (data: any) => {
+          const user = {
+            id: data?.data?.data?.id,
+            email: data?.data?.data?.email,
+            firstName: data?.data?.data?.firstName,
+            lastName: data?.data?.data?.lastName,
+          };
+          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh, user);
+          navigate('/');
           notifications.show({
             color: 'teal',
             title: 'Email verified successfully',
             message: 'Email verified successfully',
           });
-          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh);
-          navigate('/');
         },
         onError: (err: any) => {
           notifications.show({

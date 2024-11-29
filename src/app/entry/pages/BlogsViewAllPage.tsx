@@ -58,7 +58,7 @@ export const BlogsViewAllPage = () => {
         </Container>
 
         <Grid>
-          {blogs?.data?.results?.map((blog: any, index: number) => (
+        {blogs?.data?.results?.slice(0, 3).map((blog: any, index: number) => (
             <Grid.Col span={{ base: 12, md: 4 }} key={index}>
               <Card
                 shadow="sm"

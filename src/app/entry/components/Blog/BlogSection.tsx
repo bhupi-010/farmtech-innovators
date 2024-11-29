@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
   Card,
@@ -8,7 +8,11 @@ import {
   Group,
   Paper,
   Stack,
+  useMantineTheme,
 } from '@mantine/core';
+import { useGetBlogs } from '@farmtech/entry/hooks';
+import { Link } from 'react-router-dom';
+import { IconArrowUpRight } from '@tabler/icons-react';
 
 const blogs = [
   {
@@ -58,6 +62,10 @@ const truncateText = (text: string, length: number) => {
 };
 
 export const BlogSection = () => {
+  const theme = useMantineTheme();
+  const [searchQuery, setSearchQuery] = useState('agriculture');
+  const { data: blogs, isLoading: isLoadingBlogs } = useGetBlogs(searchQuery);
+  console.log('blogs', blogs);
   return (
     <Paper shadow="none" my={100}>
       <Stack gap="sm" align="center" my="xl">
@@ -68,37 +76,43 @@ export const BlogSection = () => {
           Check out our latest blog posts
         </Text>
       </Stack>
-      <Grid gutter="lg">
+      <Grid>
+        {blogs?.data?.results?.map((blog: any, index: number) => (
+          <Grid.Col span={{ base: 12, md: 4 }} key={index}>
+            <Card shadow="sm" p="lg" radius="md" style={{ backgroundColor: theme.colors.gray[1] }}>
+              {blog.imageUrl ? (
+                <Image src={blog.imageUrl} alt={blog.title} />
+              ) : (
+                <Paper p="xs" style={{ height: 180 }} />
+              )}
 
-        {blogs.map((blog) => (
-          <Grid.Col span={{ base: 12, md: 6, lg: 3 }} key={blog.id}>
-            <Card shadow="sm" radius="md" withBorder style={{ height: '100%' }}>
-              <Card.Section>
-                <Image src={blog.image} alt={blog.title} />
-              </Card.Section>
-
-              <Text fw={700} size="lg" mt="md" color="primary">
+              <Text size="sm" color="dimmed" mt="sm">
+                {blog.author} • {new Date(blog.createdAt).toLocaleDateString()}
+              </Text>
+              <Text fw={700} size="lg" mt="xs">
                 {blog.title}
               </Text>
-              <Text size="xs" fw={500}>
-                Author: {blog.author}
+              <Text size="sm" color="dimmed" mt="xs">
+                {blog.content.length > 100 ? `${blog.content.slice(0, 100)}...` : blog.content}
               </Text>
 
-              <Text color="dimmed" size="sm">
-                {truncateText(blog.summary, 100)}
+              <Text size="sm" color="dimmed" mt="sm">
+                Category: {blog.category.name}
+              </Text>
+              <Text size="xs" color="dimmed" mt="xs">
+                Tags: {blog.tags.map((tag: any) => tag.name).join(', ')}
               </Text>
 
-              <Group justify="apart" mt="md">
-                <Button
-                  component="a"
-                  href={blog.link}
-                  gradient={{ from: 'primary', to: 'secondary' }}
-                  variant="gradient"
-                  radius="xl"
-                  size="sm"
-                >
-                  Read More
-                </Button>
+              <Group justify="apart" mt="lg">
+                <Link to={`/blogs/${blog.slug}`}>
+                  <Button
+                    rightSection={<IconArrowUpRight size={16} />}
+                    variant="light"
+                    color="primary"
+                  >
+                    Read More
+                  </Button>
+                </Link>
               </Group>
             </Card>
           </Grid.Col>
