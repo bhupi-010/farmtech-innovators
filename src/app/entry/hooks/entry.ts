@@ -11,18 +11,78 @@ export const useAddFarmlandDetails = () => {
 
 export const useEditFarmlandDetails = (id: any) => {
   return useMutation({
-    mutationFn: async (data: any) => await apiClient.post(`/farmland/${id}/`, data),
+    mutationFn: async (data: any) => await apiClient.put(`/farmland/${id}/`, data),
   });
 };
 
 export const useAddSoilDetails = () => {
   return useMutation({
-    mutationFn: async (data: any) => await apiClient.post('/register-soil-data/', data),
+    mutationFn: async (data: any) => await apiClient.post('/soil-data/', data),
   });
 };
 
 export const useEditSoilDetails = (id: any) => {
   return useMutation({
-    mutationFn: async (data: any) => await apiClient.post(`/soil/${id}/`, data),
+    mutationFn: async (data: any) => await apiClient.put(`/soil-data/${id}/`, data),
+  });
+};
+
+export const useSubscription = () => {
+  return useMutation({
+    mutationFn: async (data: any) => await apiClient.post('/subscription/', data),
+  });
+};
+
+export const useGetProfile = () => {
+  return useQuery({
+    queryKey: ['profile'],
+    queryFn: async () => (await apiClient.get('/user/profile')).data,
+  });
+};
+
+export const useGetFarmland = () => {
+  return useQuery({
+    queryKey: ['farmland'],
+    queryFn: async () => (await apiClient.get('/farmland')).data,
+  });
+};
+
+export const useCropSuggestion = () => {
+  return useMutation({
+    mutationFn: async (data: any) => await apiClient.post('/crop/crop-suggestions/', data),
+  });
+};
+
+export const useGetAllNews = () => {
+  return useQuery({
+    queryKey: ['news'],
+    queryFn: async () => (await apiClient.get('/farmland')).data,
+  });
+};
+
+export const useCreateBlogPost = () => {
+  return useMutation({
+    mutationFn: async (data: any) => await apiClient.post('/blog/posts/', data),
+  });
+};
+
+export const useGetAllCategories = () => {
+  return useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => (await apiClient.get('/blog/categories')).data,
+  });
+};
+
+export const useGetAllTags = () => {
+  return useQuery({
+    queryKey: ['tags'],
+    queryFn: async () => (await apiClient.get('/blog/tags')).data,
+  });
+};
+
+export const useGetBlogs = (query: any) => {
+  return useQuery({
+    queryKey: ['AllBlogs'],
+    queryFn: async () => (await apiClient.get('/blog/posts')).data,
   });
 };

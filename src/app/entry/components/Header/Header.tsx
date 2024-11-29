@@ -22,7 +22,14 @@ import { useAuth } from '@farmtech/auth';
 import { useTranslation } from 'react-i18next';
 import classes from './Header.module.css';
 import { LanguagePicker } from '@farmtech/shared/components/LanguagePicker/LanguagePicker';
-import { IconPlant, IconPencil, IconHelp, IconMapPin, IconChevronDown } from '@tabler/icons-react';
+import {
+  IconPlant,
+  IconPencil,
+  IconHelp,
+  IconMapPin,
+  IconChevronDown,
+  IconMountain,
+} from '@tabler/icons-react';
 
 export function Header() {
   const { t } = useTranslation();
@@ -39,16 +46,10 @@ export function Header() {
       link: '/register-land-soil',
     },
     {
-      icon: IconPlant,
-      title: 'View Crop Recommendations',
-      description: 'Get tailored crop suggestions based on your land and soil data.',
-      link: '/recommendations',
-    },
-    {
-      icon: IconPencil,
-      title: 'Update Land Info',
-      description: 'Modify or update your existing land information.',
-      link: '/update-land-info',
+      icon: IconMountain,
+      title: 'View Public Farmlands',
+      description: 'Discover and explore public farmlands for agricultural purposes.',
+      link: '/view-public-farmlands',
     },
     {
       icon: IconHelp,
@@ -100,7 +101,7 @@ export function Header() {
                   <a href="#" className={classes.link}>
                     <Center inline>
                       <Box component="span" mr={5}>
-                        Options
+                        Farmland
                       </Box>
                       <IconChevronDown size={16} color={theme.colors.primary[6]} />
                     </Center>
@@ -110,6 +111,18 @@ export function Header() {
                   <Stack>{links}</Stack>
                 </HoverCard.Dropdown>
               </HoverCard>
+              <Link
+                to="/news"
+                className={`${location.pathname === '/news' ? classes.active : classes.link}`}
+              >
+                News
+              </Link>
+              <Link
+                to="/blogs"
+                className={`${location.pathname === '/blog' ? classes.active : classes.link}`}
+              >
+                Blog
+              </Link>
               <Link
                 to="/about-us"
                 className={`${location.pathname === '/about-us' ? classes.active : classes.link}`}

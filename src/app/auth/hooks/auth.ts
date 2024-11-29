@@ -26,7 +26,6 @@ const register = async ({
   email,
   password,
   confirmPassword,
-  address,
   firstName,
   lastName,
   mobileNumber,
@@ -38,7 +37,6 @@ const register = async ({
     firstName,
     lastName,
     mobileNumber,
-    address,
   });
 };
 
@@ -73,16 +71,13 @@ export const useResetPassword = () => {
 export const useVerifyEmail = () => {
   return useMutation({
     mutationFn: async ({ otp }: { otp: string }) => {
-      return await apiClient.post(`/api/user-verification/verify-email-otp/`, {
+      return await apiClient.post(`/user-verification/verify-email-otp/`, {
         otp: String(otp),
       });
     },
   });
 };
 
-export const useProfile = () => {
-  return useQuery({ queryKey: ['profile'], queryFn: async () => await apiClient.get('/me') });
-};
 
 export const useLoginByOtp = () => {
   return useMutation({

@@ -25,12 +25,13 @@ apiClient.interceptors.request.use(
     const storedRefreshToken = localStorage.getItem('refresh');
     const token = storedToken ? JSON.parse(storedToken) : null;
     const refreshToken = storedRefreshToken ? parseToken(storedRefreshToken) : null;
+
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
-    if (refreshToken) {
-      config.headers['x-refresh-token'] = `${refreshToken}`;
-    }
+    // if (refreshToken) {
+    //   config.headers['x-refresh-token'] = `${refreshToken}`;
+    // }
 
     return config;
   },

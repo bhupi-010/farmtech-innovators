@@ -10,7 +10,6 @@ export const VerifyEmailForm = () => {
   const { login } = useAuth();
   const params = useParams();
   const id = params?.id;
-  console.log('id', id);
   const { mutate, isPending } = useVerifyEmail();
   const resendOtpMutation = useEmailResendOtp();
   const navigate = useNavigate();

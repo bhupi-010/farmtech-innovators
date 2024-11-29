@@ -5,7 +5,7 @@ import { useUploadAttachment } from '@farmtech/shared';
 
 const defaulFileSize = 2;
 
-export const AttachmentField = ({ filePath, fileSize = defaulFileSize, ...props }: any) => {
+export const AttachmentField = ({ filePath,imageStoreName, fileSize = defaulFileSize, ...props }: any) => {
   const { form, name, label, isMultiple = false, accept } = props;
   const attachmentMutation = useUploadAttachment();
 
@@ -19,12 +19,11 @@ export const AttachmentField = ({ filePath, fileSize = defaulFileSize, ...props 
     } else {
       if (e) {
         attachmentMutation.mutate(
-          { attachment: e },
+          { file: e },
           {
             onSuccess: (data) => {
-              form.setFieldValue(name + 'File', e);
-              const file = data?.data;
-              form.setFieldValue(name, file);
+              form.setFieldValue(imageStoreName, data?.data?.data?.file);
+              form.setFieldValue(name, data?.data?.data?.id);
             },
             onError: (err) => {
               notifications.show({
@@ -45,9 +44,8 @@ export const AttachmentField = ({ filePath, fileSize = defaulFileSize, ...props 
   };
 
   if (!filePath) {
-    filePath = form.values[name]?.filePath;
+    filePath = form.values[name]?.fileUrl;
   }
-
   return filePath ? (
     <>
       <Text fw={600} mb="xs" size="sm">
@@ -55,7 +53,7 @@ export const AttachmentField = ({ filePath, fileSize = defaulFileSize, ...props 
       </Text>
       <Box maw={120}>
         <Group mb="xl" justify="space-between">
-          <Image src={`${import.meta.env.VITE_API_URL}/${filePath}`} mb="sm" h={80} w={80} />
+          <Image src={form.values.imageStoreName ?? filePath} mb="sm" h={80} w={80} />
           <CloseButton mr={-9} mt={-19} onClick={handleClose} />
         </Group>
       </Box>

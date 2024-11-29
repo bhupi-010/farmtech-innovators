@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container,
   Grid,
@@ -9,9 +9,12 @@ import {
   Stack,
   ThemeIcon,
   useMantineTheme,
+  Card,
+  Image,
 } from '@mantine/core';
 import { IconArrowUpRight } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 const newsItems = [
   {
     id: 1,
@@ -38,9 +41,24 @@ const newsItems = [
 
 export const NewsSection = () => {
   const theme = useMantineTheme();
+  const [news, setNews] = useState<any>([]);
+  const [searchQuery, setSearchQuery] = useState('agriculture');
+
+  const getNews = async (query: string) => {
+    const data = await axios
+      .get(
+        `https://newsapi.org/v2/everything?q=${query}&from=2024-10-29&sortBy=relevancy&apiKey=d534d41f03594af9aae1353b98e77426&pageSize=3`
+      )
+      .then((response) => response.data);
+    setNews(data);
+  };
+
+  useEffect(() => {
+    getNews(searchQuery);
+  }, [searchQuery]);
 
   return (
-    <Paper shadow="none">
+    <Paper shadow="none" my={100}>
       <Grid align="center" justify="space-between">
         <Grid.Col span={6}>
           <Text fw={700} size="36px" c="black" mb="md">
@@ -50,62 +68,53 @@ export const NewsSection = () => {
             Stay updated with the most recent developments in technology, health, finance, and more.
           </Text>
           <Link to="/news">
-          <Button
-            radius="xl"
-            gradient={{ from: 'primary', to: 'secondary' }}
-            variant="gradient"
-            size="md"
-          >
-            View All News
-          </Button>
+            <Button
+              radius="xl"
+              gradient={{ from: 'primary', to: 'secondary' }}
+              variant="gradient"
+              size="md"
+            >
+              View All News
+            </Button>
           </Link>
         </Grid.Col>
         <Grid.Col span={6}>
           <Stack gap="lg">
-            {newsItems.map((news) => (
-              <Paper
-                key={news.id}
-                shadow="none"
+            {news?.articles?.map((news: any, index: number) => (
+              <Card
+                shadow="sm"
                 p="lg"
                 radius="md"
                 style={{ backgroundColor: theme.colors.gray[1] }}
               >
-                <Group justify="apart" gap="xs">
-                  <Group>
-                    <Text
-                      size="xs"
-                      c="primary"
-                      style={{ textTransform: 'uppercase', fontWeight: 700 }}
-                    >
-                      {news.category}
-                    </Text>
-                    <Text
-                      size="lg"
-                      c="dimmed"
-                      style={{ textTransform: 'uppercase', fontWeight: 700 }}
-                    >
-                      •
-                    </Text>
-                    <Text
-                      size="xs"
-                      c="dimmed"
-                      style={{ textTransform: 'uppercase', fontWeight: 700 }}
-                    >
-                      {news.date}
-                    </Text>
-                  </Group>
-                </Group>
-                <Group justify="apart" align="center" mt="xs">
-                  <Text fw={700} size="md">
-                    {news.title}
+                <Text size="sm" color="dimmed" mt="sm">
+                  {news.source.name} • {new Date(news.publishedAt).toLocaleDateString()}
+                </Text>
+                <Text fw={700} size="lg" mt="xs">
+                  {news.title}
+                </Text>
+                <Text size="sm" color="dimmed" mt="xs">
+                  {news.description}
+                </Text>
+
+                {news.author && (
+                  <Text size="xs" color="dimmed" mt="sm">
+                    Author: {news.author}
                   </Text>
-                  <Link to={news.link}>
-                    <ThemeIcon variant="transparent" color="primary">
-                      <IconArrowUpRight size={30} />
-                    </ThemeIcon>
+                )}
+
+                <Group justify="apart" mt="lg">
+                  <Link to={news.url} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      rightSection={<IconArrowUpRight size={16} />}
+                      variant="light"
+                      color="primary"
+                    >
+                      Read More
+                    </Button>
                   </Link>
                 </Group>
-              </Paper>
+              </Card>
             ))}
           </Stack>
         </Grid.Col>

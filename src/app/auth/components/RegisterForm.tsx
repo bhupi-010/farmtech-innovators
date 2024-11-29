@@ -19,15 +19,14 @@ export const RegisterForm = () => {
       confirmPassword: '',
       firstName: '',
       lastName: '',
-      address: '',
     },
     validate: yupResolver(SignUpSchema),
   });
 
   const handleSubmit = (values: SignUp) => {
-    const { email, password, confirmPassword, firstName, lastName, address } = values;
+    const { email, password, confirmPassword, firstName, lastName } = values;
     mutate(
-      { email, password, confirmPassword, firstName, lastName, address },
+      { email, password, confirmPassword, firstName, lastName },
       {
         onSuccess: (data: any) => {
           notifications.show({
@@ -92,15 +91,6 @@ export const RegisterForm = () => {
         size="md"
         withAsterisk
         {...form.getInputProps('lastName')}
-      />
-
-      <TextInput
-        label="Address"
-        placeholder="Enter address"
-        mt="md"
-        size="md"
-        withAsterisk
-        {...form.getInputProps('address')}
       />
 
       <Group justify="space-between" mt="lg">

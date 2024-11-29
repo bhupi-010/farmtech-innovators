@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Grid,
@@ -16,25 +16,12 @@ import {
 import { DefaultLayout } from '../layout/DefaultLayout';
 import { Link } from 'react-router-dom';
 import { IconArrowUpRight, IconSearch } from '@tabler/icons-react';
-import axios from 'axios';
+import { useGetBlogs } from '../hooks';
 
-export const NewsViewAllPage = () => {
+export const BlogsViewAllPage = () => {
   const theme = useMantineTheme();
-  const [news, setNews] = useState<any>([]);
   const [searchQuery, setSearchQuery] = useState('agriculture');
-
-  const getNews = async (query: string) => {
-    const data = await axios
-      .get(
-        `https://newsapi.org/v2/everything?q=${query}&from=2024-10-29&sortBy=relevancy&apiKey=d534d41f03594af9aae1353b98e77426&pageSize=10`
-      )
-      .then((response) => response.data);
-    setNews(data);
-  };
-
-  useEffect(() => {
-    getNews(searchQuery);
-  }, [searchQuery]);
+  const { data: blogs, isLoading: isLoadingBlogs } = useGetBlogs(searchQuery);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -45,51 +32,65 @@ export const NewsViewAllPage = () => {
       <Paper shadow="none" my="xl">
         <Stack align="center" mb="lg">
           <Text fw={700} ta="center" size="36px" style={{ color: '#333' }}>
-            Latest News
+            Latest Blogs
           </Text>
           <Text c="dimmed" ta="center">
-            Stay updated with the latest articles from various categories
+            Stay updated with the latest blogs from various categories
           </Text>
         </Stack>
 
         <Container mb="lg">
-          <TextInput
-            leftSection={<IconSearch size={16} />}
-            placeholder="Search news..."
-            value={searchQuery}
-            onChange={handleSearch}
-            radius="md"
-          />
+          <Group justify="center">
+            <TextInput
+              leftSection={<IconSearch size={16} />}
+              placeholder="Search blogs..."
+              miw={300}
+              value={searchQuery}
+              onChange={handleSearch}
+              radius="md"
+            />
+            <Link to="/blogs/add">
+              <Button leftSection={<IconArrowUpRight />} radius="md" size="sm">
+                Add Blog
+              </Button>
+            </Link>
+          </Group>
         </Container>
 
         <Grid>
-          {news?.articles?.map((news: any, index: number) => (
-            <Grid.Col span={{ base: 12, md: 6 }} key={index}>
+          {blogs?.data?.results?.map((blog: any, index: number) => (
+            <Grid.Col span={{ base: 12, md: 4 }} key={index}>
               <Card
                 shadow="sm"
                 p="lg"
                 radius="md"
                 style={{ backgroundColor: theme.colors.gray[1] }}
               >
-                <Image src={news.urlToImage} alt={news.title} height={180} />
-                <Text size="sm" color="dimmed" mt="sm">
-                  {news.source.name} • {new Date(news.publishedAt).toLocaleDateString()}
-                </Text>
-                <Text fw={700} size="lg" mt="xs">
-                  {news.title}
-                </Text>
-                <Text size="sm" color="dimmed" mt="xs">
-                  {news.description}
-                </Text>
-
-                {news.author && (
-                  <Text size="xs" color="dimmed" mt="sm">
-                    Author: {news.author}
-                  </Text>
+                {blog.imageUrl ? (
+                  <Image src={blog.imageUrl} alt={blog.title} />
+                ) : (
+                  <Paper p="xs" style={{ height: 180 }} />
                 )}
 
+                <Text size="sm" color="dimmed" mt="sm">
+                  {blog.author} • {new Date(blog.createdAt).toLocaleDateString()}
+                </Text>
+                <Text fw={700} size="lg" mt="xs">
+                  {blog.title}
+                </Text>
+                <Text size="sm" color="dimmed" mt="xs">
+                  {blog.content.length > 100 ? `${blog.content.slice(0, 100)}...` : blog.content}
+                </Text>
+
+                <Text size="sm" color="dimmed" mt="sm">
+                  Category: {blog.category.name}
+                </Text>
+                <Text size="xs" color="dimmed" mt="xs">
+                  Tags: {blog.tags.map((tag: any) => tag.name).join(', ')}
+                </Text>
+
                 <Group justify="apart" mt="lg">
-                  <Link to={news.url} target="_blank" rel="noopener noreferrer">
+                  <Link to={`/blogs/${blog.slug}`}>
                     <Button
                       rightSection={<IconArrowUpRight size={16} />}
                       variant="light"

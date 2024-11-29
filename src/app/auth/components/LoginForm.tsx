@@ -10,7 +10,6 @@ import { Login, LoginSchema } from '../schema';
 import { useLocalStorage } from '@farmtech/shared';
 export const LoginForm = () => {
   const { login } = useAuth();
-  const [user, setStoredUser] = useLocalStorage('user', null);
   const { mutate, isPending } = useLogin();
   const navigate = useNavigate();
 
@@ -24,7 +23,6 @@ export const LoginForm = () => {
 
   const handleSubmit = (values: Login) => {
     const { email, password } = values;
-
     mutate(
       { email, password },
       {
@@ -35,13 +33,11 @@ export const LoginForm = () => {
             firstName: data?.data?.data?.firstName,
             lastName: data?.data?.data?.lastName,
           };
-          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh);
-          setStoredUser(data?.data?.data);
+          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh, user);
           if (data?.data?.data?.isEmailVerified === false) {
             navigate('/verify-email/' + data?.data?.data?.id);
             return;
           }
-
           notifications.show({
             color: 'teal',
             title: 'Logged in successfully',

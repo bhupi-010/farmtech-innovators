@@ -2,16 +2,15 @@ import { useMutation } from '@tanstack/react-query';
 import { apiClient } from '../lib';
 
 type AttachmentPayload = {
-  attachment: File;
-  maxFileSize?: number;
+  file: File;
 };
 
 export const useUploadAttachment = () => {
   return useMutation({
-    mutationFn: async ({ attachment }: AttachmentPayload) => {
+    mutationFn: async ({ file }: AttachmentPayload) => {
       const formData = new FormData();
-      formData.append('attachment', attachment);
-      return await apiClient.post('/upload', formData, {
+      formData.append('file', file);
+      return await apiClient.post('/upload/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

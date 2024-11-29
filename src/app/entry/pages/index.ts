@@ -6,3 +6,6 @@ export * from './NewsViewPage';
 export * from './NewsViewAllPage';
 export * from './ProfilePage';
 export * from './RegisterFarmlandAndSoil';
+export * from './SubscriptionPage';
+export * from './AddBlogPage';
+export * from './BlogsViewAllPage';

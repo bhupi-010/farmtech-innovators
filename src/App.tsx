@@ -12,6 +12,7 @@ import { Router } from './routing/Router';
 //styling of modules
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
+import '@mantine/dates/styles.css';
 import './App.css';
 
 // Create a client

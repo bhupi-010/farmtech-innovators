@@ -7,7 +7,19 @@ import {
   ResetPasswordPage,
   VerifyEmailPage,
 } from '@farmtech/auth';
-import { AboutUsPage, BlogViewPage, ContactUsPage, HomePage, NewsViewAllPage, NewsViewPage, ProfilePage, RegisterFarmlandAndSoilPage } from '@farmtech/entry';
+import {
+  AboutUsPage,
+  AddBlogPage,
+  BlogsViewAllPage,
+  BlogViewPage,
+  ContactUsPage,
+  HomePage,
+  NewsViewAllPage,
+  NewsViewPage,
+  ProfilePage,
+  RegisterFarmlandAndSoilPage,
+  SubscriptionPage,
+} from '@farmtech/entry';
 import { PAGE_URL } from '@farmtech/shared';
 import { RootBoundary } from '@farmtech/shared/pages/ErrorBoundary';
 import { AuthRoutes } from './AuthRoutes';
@@ -30,25 +42,40 @@ const router = createBrowserRouter([
         element: <AboutUsPage />,
       },
       {
-        path: 'blog/:id',
+        path: '/blog/:id',
         element: <BlogViewPage />,
       },
       {
-        path: 'news/:id',
+        path: '/news/:id',
         element: <NewsViewPage />,
       },
       {
-        path: 'news',
+        path: '/news',
         element: <NewsViewAllPage />,
       },
       {
-        path: 'profile',
+        path: '/profile',
         element: <ProfilePage />,
       },
       {
         path: '/register-land-soil',
         element: <RegisterFarmlandAndSoilPage />,
-
+      },
+      {
+        path: `/verify-email/:id`,
+        element: <VerifyEmailPage />,
+      },
+      {
+        path: '/subscription',
+        element: <SubscriptionPage />,
+      },
+      {
+        path: '/blogs/add',
+        element: <AddBlogPage />,
+      },
+      {
+        path: '/blogs',
+        element: <BlogsViewAllPage />,
       },
       {
         path: '',
@@ -69,10 +96,6 @@ const router = createBrowserRouter([
           {
             path: `${PAGE_URL.RESET_PASSWORD}/:token`,
             element: <ResetPasswordPage />,
-          },
-          {
-            path: `/verify-email/:id`,
-            element: <VerifyEmailPage />,
           },
         ],
       },

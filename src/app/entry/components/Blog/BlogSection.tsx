@@ -59,7 +59,7 @@ const truncateText = (text: string, length: number) => {
 
 export const BlogSection = () => {
   return (
-    <Paper shadow="none" my="xl">
+    <Paper shadow="none" my={100}>
       <Stack gap="sm" align="center" my="xl">
         <Text fw={700} ta="center" size="30px">
           Our Blogs

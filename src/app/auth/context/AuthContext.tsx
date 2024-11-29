@@ -8,14 +8,12 @@ interface User {
   email: string;
   firstName: string;
   lastName: string;
-  address: string;
-  password?: string;
 }
 
 interface AuthContextType {
   user: User;
   isAuthenticated: boolean;
-  login: (access: string, refresh?: string) => void;
+  login: (access: string, refresh?: string, user?: User) => void;
   logout: () => void;
 }
 
@@ -24,19 +22,20 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 // AuthProvider component
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setStoredUser] = useLocalStorage('user', null);
-  const [token, setStoredToken] = useLocalStorage('token', null);
-  const [refreshToken, setRefreshToken] = useLocalStorage('refreshToken', null);
+  const [token, setStoredToken] = useLocalStorage('access', null);
+  const [refreshToken, setRefreshToken] = useLocalStorage('refresh', null);
 
   const parseUser = (token: string) => {
     const parsedUser = jwtDecode(token);
     setStoredUser(parsedUser);
   };
 
-  const login = (access: string, refresh?: string) => {
+  const login = (access: string, refresh?: string, user?: User) => {
     setStoredToken(access);
+    setStoredUser(user);
     // parseUser(access);
-    if(refresh){
-      setRefreshToken(refreshToken);
+    if (refresh) {
+      setRefreshToken(refresh);
     }
   };
 
