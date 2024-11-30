@@ -22,26 +22,27 @@ export const Hero = () => {
           <div className={classes.inner}>
             <div className={classes.content}>
               <Title className={classes.title}>
-                A{' '}
+                 {''}
                 <Text
                   component="span"
                   inherit
                   variant="gradient"
-                  gradient={{ from: 'pink', to: 'yellow' }}
+                  gradient={{ from: 'Black', to: 'black' }}
+
                 >
-                  fully featured
+                  Empowering  Farmers
                 </Text>{' '}
-                React components library
+                With Data Driven Insights
               </Title>
 
               <Text className={classes.description} mt={30}>
-                Build fully functional accessible web applications with ease – Mantine includes more
-                than 100 customizable components and hooks to cover you in any situation
+                At SmartFarm, we believe in transforming traditional farming into a smarter, more sustainable practice. Our innovative platform combines cutting-edge technology with agricultural expertise to help
+                farmers make informed decisions for optimal crop and water management.
               </Text>
 
               <Button
                 variant="gradient"
-                gradient={{ from: 'pink', to: 'yellow' }}
+                gradient={{ from: 'green', to: 'yellow' }}
                 size="xl"
                 className={classes.control}
                 mt={40}

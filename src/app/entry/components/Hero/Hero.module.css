@@ -2,7 +2,7 @@
   background-color: #11284b;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%,var(--mantine-color-secondary-5) 90%),
+  background-image: linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, darkseagreen 90%),
     url(https://eos.com/wp-content/uploads/2020/12/green-wheat.jpg.webp);
   padding-top: calc(var(--mantine-spacing-xl) * 3);
   padding-bottom: calc(var(--mantine-spacing-xl) * 3);
