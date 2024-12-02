@@ -11,6 +11,7 @@ import {
   useMantineTheme,
   Card,
   Image,
+  Title,
 } from '@mantine/core';
 import { IconArrowUpRight } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -60,23 +61,20 @@ export const NewsSection = () => {
   return (
     <Paper shadow="none" my={100}>
       <Grid align="center" justify="space-between">
-        <Grid.Col span={6}>
-          <Text fw={700} size="36px" c="black" mb="md">
+        <Grid.Col span={6} >
+          <Stack align="center" justify="center" gap="md" >
+          <Text fw={700} size="36px" c="black" >
             Latest News
           </Text>
-          <Text c="dimmed" mb="lg">
+          <Text c="dimmed" ta={"center"} maw={500}>
             Stay updated with the most recent developments in technology, health, finance, and more.
           </Text>
           <Link to="/news">
-            <Button
-              radius="xl"
-              gradient={{ from: 'primary', to: 'secondary' }}
-              variant="gradient"
-              size="md"
-            >
+            <Button radius="xl" variant="filled" size="md">
               View All News
             </Button>
           </Link>
+          </Stack>
         </Grid.Col>
         <Grid.Col span={6}>
           <Stack gap="lg">
@@ -87,18 +85,18 @@ export const NewsSection = () => {
                 radius="md"
                 style={{ backgroundColor: theme.colors.gray[1] }}
               >
-                <Text size="sm" color="dimmed" mt="sm">
+                <Text size="sm"  mt="sm" >
                   {news.source.name} • {new Date(news.publishedAt).toLocaleDateString()}
                 </Text>
-                <Text fw={700} size="lg" mt="xs">
+                <Title  size="lg" mt="xs" maw={600}>
                   {news.title}
-                </Text>
-                <Text size="sm" color="dimmed" mt="xs">
+                </Title>
+                <Text size="sm" color="dimmed" mt="xs" maw={600} truncate={true}>
                   {news.description}
                 </Text>
 
                 {news.author && (
-                  <Text size="xs" color="dimmed" mt="sm">
+                  <Text size="xs" color="dimmed" fw={600} mt="sm">
                     Author: {news.author}
                   </Text>
                 )}

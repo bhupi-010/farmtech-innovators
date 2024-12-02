@@ -3,7 +3,7 @@ import { notifications } from '@mantine/notifications';
 import { IconCheck, IconUpload } from '@tabler/icons-react';
 import { useUploadAttachment } from '@farmtech/shared';
 
-const defaulFileSize = 2;
+const defaulFileSize = 10;
 
 export const AttachmentField = ({ filePath,imageStoreName, fileSize = defaulFileSize, ...props }: any) => {
   const { form, name, label, isMultiple = false, accept } = props;

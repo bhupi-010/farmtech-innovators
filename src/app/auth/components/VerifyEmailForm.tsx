@@ -29,13 +29,13 @@ export const VerifyEmailForm = () => {
       { otp },
       {
         onSuccess: (data: any) => {
-          const user = {
-            id: data?.data?.data?.id,
-            email: data?.data?.data?.email,
-            firstName: data?.data?.data?.firstName,
-            lastName: data?.data?.data?.lastName,
-          };
-          login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh, user);
+          // const user = {
+          //   id: data?.data?.data?.id,
+          //   email: data?.data?.data?.email,
+          //   firstName: data?.data?.data?.firstName,
+          //   lastName: data?.data?.data?.lastName,
+          // };
+          // login(data?.data?.data?.tokens?.access, data?.data?.data?.tokens?.refresh, user);
           navigate('/');
           notifications.show({
             color: 'teal',

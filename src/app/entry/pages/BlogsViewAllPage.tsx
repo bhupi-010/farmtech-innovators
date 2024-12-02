@@ -58,7 +58,7 @@ export const BlogsViewAllPage = () => {
         </Container>
 
         <Grid>
-        {blogs?.data?.results?.slice(0, 3).map((blog: any, index: number) => (
+          {blogs?.data?.results?.slice(0, 3).map((blog: any, index: number) => (
             <Grid.Col span={{ base: 12, md: 4 }} key={index}>
               <Card
                 shadow="sm"
@@ -67,7 +67,18 @@ export const BlogsViewAllPage = () => {
                 style={{ backgroundColor: theme.colors.gray[1] }}
               >
                 {blog.imageUrl ? (
-                  <Image src={blog.imageUrl} alt={blog.title} />
+                  <Image
+                    src={blog.imageUrl}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                      borderRadius: theme.radius.md,
+                      display: 'block',
+                    }}
+                    alt={blog.title}
+                  />
                 ) : (
                   <Paper p="xs" style={{ height: 180 }} />
                 )}
@@ -90,7 +101,7 @@ export const BlogsViewAllPage = () => {
                 </Text>
 
                 <Group justify="apart" mt="lg">
-                  <Link to={`/blogs/${blog.slug}`}>
+                  <Link to={`/blogs/${blog.id}`}>
                     <Button
                       rightSection={<IconArrowUpRight size={16} />}
                       variant="light"

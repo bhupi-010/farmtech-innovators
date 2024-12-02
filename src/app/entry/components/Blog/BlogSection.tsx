@@ -13,7 +13,7 @@ import {
 import { useGetBlogs } from '@farmtech/entry/hooks';
 import { Link } from 'react-router-dom';
 import { IconArrowUpRight } from '@tabler/icons-react';
-
+import classes from './BlogSection.module.css';
 const blogs = [
   {
     id: 1,
@@ -81,7 +81,7 @@ export const BlogSection = () => {
           <Grid.Col span={{ base: 12, md: 4 }} key={index}>
             <Card shadow="sm" p="lg" radius="md" style={{ backgroundColor: theme.colors.gray[1] }}>
               {blog.imageUrl ? (
-                <Image src={blog.imageUrl} alt={blog.title} />
+                <Image src={blog.imageUrl} alt={blog.title} className={classes.image} />
               ) : (
                 <Paper p="xs" style={{ height: 180 }} />
               )}
@@ -104,7 +104,7 @@ export const BlogSection = () => {
               </Text>
 
               <Group justify="apart" mt="lg">
-                <Link to={`/blogs/${blog.slug}`}>
+                <Link to={`/blogs/${blog.id}`}>
                   <Button
                     rightSection={<IconArrowUpRight size={16} />}
                     variant="light"

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { AuthContext } from '@farmtech/auth';
 import { apiClient } from '@farmtech/shared';
 
@@ -61,8 +61,12 @@ export const useGetAllNews = () => {
 };
 
 export const useCreateBlogPost = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data: any) => await apiClient.post('/blog/posts/', data),
+    onSuccess: () => {
+      queryClient.refetchQueries({ queryKey: ['AllBlogs'] });
+    },
   });
 };
 
@@ -84,5 +88,19 @@ export const useGetBlogs = (query: any) => {
   return useQuery({
     queryKey: ['AllBlogs'],
     queryFn: async () => (await apiClient.get('/blog/posts')).data,
+  });
+};
+
+export const useGetBlog = (id: any) => {
+  return useQuery({
+    queryKey: ['blog', id],
+    queryFn: async () => (await apiClient.get(`/blog/posts/${id}`)).data,
+    enabled: !!id,
+  });
+};
+
+export const useAddComment = (id: any) => {
+  return useMutation({
+    mutationFn: async (data: any) => await apiClient.put(`/blog/comments/${id}/`, data),
   });
 };

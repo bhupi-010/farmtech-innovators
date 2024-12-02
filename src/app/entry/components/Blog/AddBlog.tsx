@@ -35,7 +35,7 @@ export const AddBlog = () => {
   const form = useForm<BlogPost>({
     initialValues: {
       title: '',
-      author: 'john_doe',
+      author: '',
       content: '',
       categoryId: '',
       tagIds: [],

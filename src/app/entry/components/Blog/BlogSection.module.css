@@ -1,0 +1,8 @@
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover !important;
+  object-position: center;
+  border-radius: var(--mantine-radius-md);
+  display: block;
+}

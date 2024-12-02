@@ -12,7 +12,7 @@ export function SubscriptionSection() {
         <Text fw={500} style={{ fontSize: '20px', lineHeight: '48px' }} mb={5}>
           Join the SmartFarm community!
         </Text>
-        <Text fz="sm" c="dimmed">
+        <Text fz="sm" c="dimmed" maw={500}>
           Will allow you to register multiple farmlands and you will never miss important product updates, latest news and community QA sessions.
         </Text>
 
