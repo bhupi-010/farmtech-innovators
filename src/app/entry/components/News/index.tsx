@@ -47,7 +47,7 @@ export const NewsSection = () => {
   const getNews = async (query: string) => {
     const data = await axios
       .get(
-        `https://newsapi.org/v2/everything?q=${query}&from=2024-10-29&sortBy=relevancy&apiKey=d534d41f03594af9aae1353b98e77426&pageSize=3`
+        `https://newsapi.org/v2/everything?q=${query}&sortBy=relevancy&apiKey=d534d41f03594af9aae1353b98e77426&pageSize=3`
       )
       .then((response) => response.data);
     setNews(data);
