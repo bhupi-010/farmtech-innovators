@@ -1,16 +1,30 @@
 import React from 'react';
-import { Image, Text, Paper, Stack, Group, Divider, Center, Textarea, Button } from '@mantine/core';
+import {
+  Image,
+  Text,
+  Paper,
+  Stack,
+  Group,
+  Divider,
+  Center,
+  Textarea,
+  Button,
+  Avatar,
+  ScrollArea,
+} from '@mantine/core';
 import { DefaultLayout } from '../layout/DefaultLayout';
-import { useAddComment, useGetBlog } from '../hooks';
+import { useAddComment, useGetBlog, useGetComments, useGetCommentsById } from '../hooks';
 import { useParams } from 'react-router-dom';
 import { ErrorPage, LoadingIndicator } from '@farmtech/shared';
 import { notifications } from '@mantine/notifications';
+import { formatDateWithTime } from '../utils/formatdate';
 
 export const BlogViewPage = () => {
   const { id } = useParams();
-  // const addComment = useAddComment(id);
+  const addComment = useAddComment();
   const { data: blog, isError, isLoading } = useGetBlog(id);
-  // const [comment, setComment] = React.useState('');
+  // const { data: comments, isError: commentsError, isLoading: commentsLoading } = useGetCommentsById(id);
+  const [comment, setComment] = React.useState('');
 
   if (isLoading)
     return (
@@ -20,36 +34,46 @@ export const BlogViewPage = () => {
     );
   if (isError || !blog) return <ErrorPage />;
 
-  // const handleCommentSubmit = () => {
-  //   addComment.mutate({ text: comment}, { onSuccess: () => {
-  //     notifications.show({
-  //       color: 'teal',
-  //       title: 'Comment Added Successfully',
-  //       message: 'Your comment has been added successfully.',
-  //     })
-  //   },
-  //   onError: (err: any) => {
-  //     notifications.show({
-  //       color: 'red',
-  //       title: 'Error',
-  //       message: err?.message
-  //         ? err?.message
-  //         : 'Failed to add comment! Please try again later',
-  //     });
-  //   }});
-  //   setComment(''); 
-  // };
+  const handleCommentSubmit = () => {
+    if (!comment.trim()) {
+      notifications.show({
+        color: 'yellow',
+        title: 'Empty Comment',
+        message: 'Please write a comment before submitting.',
+      });
+      return;
+    }
+    addComment.mutate(
+      { content: comment, post: id },
+      {
+        onSuccess: () => {
+          notifications.show({
+            color: 'teal',
+            title: 'Comment Added Successfully',
+            message: 'Your comment has been added successfully.',
+          });
+          setComment('');
+        },
+        onError: (err: any) => {
+          notifications.show({
+            color: 'red',
+            title: 'Error',
+            message: err?.message ? err?.message : 'Failed to add comment! Please try again later.',
+          });
+        },
+      }
+    );
+  };
 
   return (
     <DefaultLayout>
       <Paper shadow="none" p="lg">
         <Stack align="center" gap="md">
-          {/* Blog Title and Author (Centered) */}
+          {/* Blog Title and Author */}
           <Text fw={700} size="32px" ta="center">
             {blog.data.title}
           </Text>
-
-          <Group gap="xs" color="dimmed" justify="center">
+          <Group gap="xs" color="dimmed">
             <Text size="sm">By:</Text>
             <Text size="sm" fw={500}>
               {blog.data.author}
@@ -60,22 +84,20 @@ export const BlogViewPage = () => {
           <Image src={blog.data.imageUrl} alt={blog.data.title} radius="md" mb="lg" />
         </Stack>
 
-        {/* Blog Details (Left-Aligned) */}
-        <Stack align="start" gap="md">
+        {/* Blog Metadata */}
+        <Stack align="start" gap="sm">
           <Group gap="xs" color="dimmed">
             <Text size="sm">Date:</Text>
             <Text size="sm" fw={500}>
-              {new Date(blog.data.createdAt).toLocaleDateString()}
+              {formatDateWithTime(blog.data.createdAt)}
             </Text>
           </Group>
-
           <Group gap="xs" color="dimmed">
             <Text size="sm">Category:</Text>
             <Text size="sm" fw={500}>
               {blog.data.category.name}
             </Text>
           </Group>
-
           <Group gap="xs" color="dimmed">
             <Text size="sm">Tags:</Text>
             {blog.data.tags.map((tag: any) => (
@@ -88,7 +110,7 @@ export const BlogViewPage = () => {
 
         <Divider my="lg" />
 
-        {/* Blog Content (Left-Aligned) */}
+        {/* Blog Content */}
         <Stack gap="md">
           {blog.data.content.split('\n').map((paragraph: string, index: number) => (
             <Text key={index} size="md" ta="start">
@@ -96,20 +118,61 @@ export const BlogViewPage = () => {
             </Text>
           ))}
         </Stack>
-        {/* <Textarea
-          placeholder="Write a comment..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          minRows={3}
-        />
-        <Button
-          mt="md"
-          onClick={handleCommentSubmit}
-          loading={addComment.isPending}
-          disabled={addComment.isPending}
-        >
-          comment
-        </Button> */}
+
+        <Divider my="lg" />
+
+        {/* Comments Section */}
+        <Stack gap="lg">
+          <Text fw={600} size="xl">
+            Comments
+          </Text>
+
+          <ScrollArea type="auto" style={{ maxHeight: '300px' }}>
+            {blog?.data?.comments?.map((comment: any) => (
+              <Paper key={comment.id} p="md" radius="md" shadow="xs" mb="sm" withBorder>
+                <Group gap="sm">
+                  <Avatar
+                    src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                    alt={comment.author}
+                    radius="xl"
+                  />
+                  <div>
+                    <Text size="sm" fw={500}>
+                      {comment.author}
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      {formatDateWithTime(comment.createdAt)}
+                    </Text>
+                  </div>
+                </Group>
+                <Text mt="sm" size="sm">
+                  {comment.content}
+                </Text>
+              </Paper>
+            ))}
+          </ScrollArea>
+
+          {/* Add Comment Section */}
+          <Stack gap="sm">
+            <Textarea
+              placeholder="Write a comment..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              minRows={3}
+              autosize
+            />
+            <Button
+              mt="sm"
+              maw={200}
+              radius={"xl"}
+              onClick={handleCommentSubmit}
+              loading={addComment.isPending}
+              disabled={addComment.isPending}
+            >
+              Add Comment
+            </Button>
+          </Stack>
+        </Stack>
       </Paper>
     </DefaultLayout>
   );

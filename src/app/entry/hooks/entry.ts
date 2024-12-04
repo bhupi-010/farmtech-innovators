@@ -99,8 +99,26 @@ export const useGetBlog = (id: any) => {
   });
 };
 
-export const useAddComment = (id: any) => {
+export const useAddComment = () => {
+  const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (data: any) => await apiClient.put(`/blog/comments/${id}/`, data),
+    mutationFn: async (data: any) => await apiClient.post(`/blog/comments/`, data),
+    onSuccess: () => {
+      queryClient.refetchQueries({ queryKey: ['blog'] });
+    },
+  });
+};
+
+export const useGetCommentsById = (id: any) => {
+  return useQuery({
+    queryKey: ['comment', id],
+    queryFn: async () => (await apiClient.get(`/blog/comments/${id}`)).data,
+  });
+};
+
+export const useGetComments = () => {
+  return useQuery({
+    queryKey: ['comments'],
+    queryFn: async () => (await apiClient.get('/blog/comments/')).data,
   });
 };
