@@ -21,7 +21,7 @@ const truncateText = (text: string, length: number) => {
 
 export const BlogSection = () => {
   const theme = useMantineTheme();
-  const [searchQuery, setSearchQuery] = useState('agriculture');
+  const [searchQuery, setSearchQuery] = useState('');
   const { data: blogs, isLoading: isLoadingBlogs } = useGetBlogs(searchQuery);
 
   // Mock data (ensure id is string)

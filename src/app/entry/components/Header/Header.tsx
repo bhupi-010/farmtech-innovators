@@ -95,7 +95,7 @@ export function Header() {
               >
                 {t('home')}
               </Link>
-
+              {isAuthenticated ? (
               <HoverCard width={300} position="bottom" radius="md" shadow="md" withinPortal>
                 <HoverCard.Target>
                   <a href="#" className={classes.link}>
@@ -110,7 +110,7 @@ export function Header() {
                 <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
                   <Stack>{links}</Stack>
                 </HoverCard.Dropdown>
-              </HoverCard>
+              </HoverCard>) : null}
               <Link
                 to="/news"
                 className={`${location.pathname === '/news' ? classes.active : classes.link}`}

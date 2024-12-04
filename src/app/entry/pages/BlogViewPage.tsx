@@ -18,9 +18,11 @@ import { useParams } from 'react-router-dom';
 import { ErrorPage, LoadingIndicator } from '@farmtech/shared';
 import { notifications } from '@mantine/notifications';
 import { formatDateWithTime } from '../utils/formatdate';
+import { useAuth } from '@farmtech/auth';
 
 export const BlogViewPage = () => {
   const { id } = useParams();
+  const { isAuthenticated } = useAuth();
   const addComment = useAddComment();
   const { data: blog, isError, isLoading } = useGetBlog(id);
   // const { data: comments, isError: commentsError, isLoading: commentsLoading } = useGetCommentsById(id);
@@ -122,12 +124,13 @@ export const BlogViewPage = () => {
         <Divider my="lg" />
 
         {/* Comments Section */}
+
         <Stack gap="lg">
           <Text fw={600} size="xl">
             Comments
           </Text>
 
-          <ScrollArea type="auto" style={{ maxHeight: '300px' }}>
+          <div>
             {blog?.data?.comments?.map((comment: any) => (
               <Paper key={comment.id} p="md" radius="md" shadow="xs" mb="sm" withBorder>
                 <Group gap="sm">
@@ -150,28 +153,32 @@ export const BlogViewPage = () => {
                 </Text>
               </Paper>
             ))}
-          </ScrollArea>
+          </div>
 
           {/* Add Comment Section */}
-          <Stack gap="sm">
-            <Textarea
-              placeholder="Write a comment..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              minRows={3}
-              autosize
-            />
-            <Button
-              mt="sm"
-              maw={200}
-              radius={"xl"}
-              onClick={handleCommentSubmit}
-              loading={addComment.isPending}
-              disabled={addComment.isPending}
-            >
-              Add Comment
-            </Button>
-          </Stack>
+          {isAuthenticated && (
+            <>
+              <Stack gap="sm">
+                <Textarea
+                  placeholder="Write a comment..."
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  minRows={3}
+                  autosize
+                />
+                <Button
+                  mt="sm"
+                  maw={200}
+                  radius={'xl'}
+                  onClick={handleCommentSubmit}
+                  loading={addComment.isPending}
+                  disabled={addComment.isPending}
+                >
+                  Add Comment
+                </Button>
+              </Stack>
+            </>
+          )}
         </Stack>
       </Paper>
     </DefaultLayout>

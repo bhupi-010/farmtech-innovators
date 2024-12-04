@@ -125,3 +125,10 @@ export const useGetComments = () => {
     queryFn: async () => (await apiClient.get('/blog/comments/')).data,
   });
 };
+
+export const useAddContact = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (data: any) => await apiClient.post(`/contact-us/`, data),
+  });
+};

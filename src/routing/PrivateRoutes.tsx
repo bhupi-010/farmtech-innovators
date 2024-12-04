@@ -3,7 +3,7 @@ import { notifications } from '@mantine/notifications';
 
 import { useAuth } from '@farmtech/auth';
 
-export const PrivateRoutes = ({ redirectPath = '/', children }: any) => {
+export const PrivateRoutes = ({ redirectPath = '/login', children }: any) => {
   const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {

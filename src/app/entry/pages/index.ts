@@ -9,3 +9,4 @@ export * from './RegisterFarmlandAndSoil';
 export * from './SubscriptionPage';
 export * from './AddBlogPage';
 export * from './BlogsViewAllPage';
+export * from './PublicFarmlandPage';

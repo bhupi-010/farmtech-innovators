@@ -17,12 +17,14 @@ import {
   NewsViewAllPage,
   NewsViewPage,
   ProfilePage,
+  PublicFarmlandPage,
   RegisterFarmlandAndSoilPage,
   SubscriptionPage,
 } from '@farmtech/entry';
 import { PAGE_URL } from '@farmtech/shared';
 import { RootBoundary } from '@farmtech/shared/pages/ErrorBoundary';
 import { AuthRoutes } from './AuthRoutes';
+import { PrivateRoutes } from './PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -57,10 +59,7 @@ const router = createBrowserRouter([
         path: '/profile',
         element: <ProfilePage />,
       },
-      {
-        path: '/register-land-soil',
-        element: <RegisterFarmlandAndSoilPage />,
-      },
+
       {
         path: `/verify-email/:id`,
         element: <VerifyEmailPage />,
@@ -77,6 +76,7 @@ const router = createBrowserRouter([
         path: '/blogs',
         element: <BlogsViewAllPage />,
       },
+
       {
         path: '',
         element: <AuthRoutes />,
@@ -97,26 +97,23 @@ const router = createBrowserRouter([
             path: `${PAGE_URL.RESET_PASSWORD}/:token`,
             element: <ResetPasswordPage />,
           },
+          {
+            path: '/view-public-farmlands',
+            element: <PublicFarmlandPage />,
+          },
         ],
       },
 
-      // {
-      //   path: PAGE_URL.DASHBOARD,
-      //   element: <PrivateRoutes />,
-      //   children: [
-      //     {
-      //       path: PAGE_URL.ADMIN,
-      //       element: <AdminRoutes />,
-      //       children: [
-      //         //page not found
-      //         {
-      //           path: '*',
-      //           element: <PageNotFound />,
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
+      {
+        path: '',
+        element: <PrivateRoutes />,
+        children: [
+          {
+            path: '/register-land-soil',
+            element: <RegisterFarmlandAndSoilPage />,
+          },
+        ],
+      },
     ],
   },
 ]);
