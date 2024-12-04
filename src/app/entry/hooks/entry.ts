@@ -84,10 +84,13 @@ export const useGetAllTags = () => {
   });
 };
 
-export const useGetBlogs = (query: any) => {
+export const useGetBlogs = (query: string) => {
   return useQuery({
-    queryKey: ['AllBlogs'],
-    queryFn: async () => (await apiClient.get('/blog/posts')).data,
+    queryKey: ['AllBlogs', query], // Add query as part of the query key
+    queryFn: async () => {
+      const params = query ? { search: query } : {};
+      return (await apiClient.get('/blog/posts', { params })).data;
+    },
   });
 };
 
