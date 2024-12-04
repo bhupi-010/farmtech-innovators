@@ -17,11 +17,13 @@ import { DefaultLayout } from '../layout/DefaultLayout';
 import { Link } from 'react-router-dom';
 import { IconArrowUpRight, IconSearch } from '@tabler/icons-react';
 import { useGetBlogs } from '../hooks';
+import { useAuth} from "@farmtech/auth";
 
 export const BlogsViewAllPage = () => {
   const theme = useMantineTheme();
-  const [searchQuery, setSearchQuery] = useState('agriculture');
+  const [searchQuery, setSearchQuery] = useState('');
   const { data: blogs, isLoading: isLoadingBlogs } = useGetBlogs(searchQuery);
+  const { isAuthenticated} = useAuth();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -49,11 +51,13 @@ export const BlogsViewAllPage = () => {
               onChange={handleSearch}
               radius="md"
             />
-            <Link to="/blogs/add">
-              <Button leftSection={<IconArrowUpRight />} radius="md" size="sm">
-                Add Blog
-              </Button>
-            </Link>
+            {isAuthenticated && ( // Conditionally render the Add Blog button based on authentication
+                <Link to="/blogs/add">
+                  <Button leftSection={<IconArrowUpRight />} radius="md" size="sm">
+                    Add Blog
+                  </Button>
+                </Link>
+            )}
           </Group>
         </Container>
 
